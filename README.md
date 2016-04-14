@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/danieldelacruz01/trails.png?label=ready&title=Ready)](https://waffle.io/danieldelacruz01/trails)
 # trails
 
 =======
