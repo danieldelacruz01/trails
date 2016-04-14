@@ -23,22 +23,40 @@
 ## Stretch Goals
 
 *in order of most -> least preferred*
-1. More than one trail available with different themes
+
+
+1.More than one trail available with different themes
 * e.g. sculptures, trees, cafes
-* *estimated difficulty: 1-2* 
-2. Varying difficulty levels
+
+
+2.Varying difficulty levels
 * in terms of pace (i.e. time limit or no time limit), recognisability of landmarks
-3. Social Media login
+
+
+3.Social Media login
 * User can keep track of the trails they have completed and the time it took them
 * Leaderboards show user's name and fb profile picture
 * Upon arrival at a checkpoint, user can see all other people who have also been at that checkpoint
-4. Points/challenges
+
+
+4.Points/challenges
 * Users receive a specified number of points per trail completed
 * Users receive badges for completing special challenges/reaching certain milestones
-5. Selfie uploads
+
+
+5.Selfie uploads
 * Users can upload a selfie at each landmark as a kind of 'tag' that can be seen by anyone who visits that landmark at a later time
-6. Custom trails
+
+
+6.Custom trails
 * Users can create their own trails and share them with friends
+
+#### Ordered List:
+
+1. First item
+2. Second item
+3. Third item
+4. Fourth item
 
 ## User Stories
 * As a local I want a novel/fun way to see landmarks I know in Wellington
