@@ -1,0 +1,113 @@
+trail = {
+  "checkpoints": [{
+      "id": 1,
+      "locationName": "Bucket Fountain",
+      "description": "bucket and water feature",
+      "latitude": -41.292196,
+      "longitude": 174.776364,
+      "imgUrl": "",
+      "timeLimit": null,
+      "distanceInMeters": null,
+      "hint": ["Found in Wellingtons famous pedestrianized St", "Where's Havana?"]
+  },
+  {
+      "id": 2,
+      "locationName": "Civic Square",
+      "description": "public space with galleries",
+      "latitude": -41.288668,
+      "longitude": 174.777244,
+      "imgUrl": "",
+      "timeLimit": 240,
+      "distanceInMeters": 400,
+      "hint": ["Near the place of books", "Capital E lives here"]
+  },
+  {
+      "id": 3,
+      "locationName": "Bronze Male Statue",
+      "description": "Sited on the edge of harbor, north of Te Papa",
+      "latitude": -41.288668,
+      "longitude": 174.777244,
+      "imgUrl": "",
+      "timeLimit": 480,
+      "distanceInMeters": 650,
+      "hint": ["Where is Te Papa", "By the waters edge"]
+  },
+  {
+      "id": 4,
+      "locationName": "Steel movie camera statue",
+      "description": "Scaled up movie camera on tripod",
+      "latitude": -41.294373,
+      "longitude": 174.784174,
+      "imgUrl": "",
+      "timeLimit": 540,
+      "distanceInMeters": 650,
+      "hint": ["The theatre famous for Lord of the Rings", "Somewhere in Cambridge, not England"]
+  },
+  {
+      "id": 5,
+      "locationName": "The Basin Reserve",
+      "description": "Great for a round of cricket",
+      "latitude": -41.300142,
+      "longitude": 174.780456,
+      "imgUrl": "",
+      "timeLimit": 360,
+      "distanceInMeters": 750,
+      "hint": ["No flyover's here!", "A round-a-bout here"]
+  },
+  {
+      "id": 6,
+      "locationName": "War Memorial",
+      "description": "National war memorial park",
+      "latitude": -41.299271,
+      "longitude": 174.776361,
+      "imgUrl": "",
+      "timeLimit": 360,
+      "distanceInMeters": 500,
+      "hint": ["Massive Massey", "Students mill about"]
+  },
+  {
+      "id": 7,
+      "locationName": "Footscray ave/Karo Dr",
+      "description": "Historic Buildings",
+      "latitude": -41.296580,
+      "longitude": 174.772576,
+      "imgUrl": "",
+      "timeLimit": 660,
+      "distanceInMeters": 900,
+      "hint": ["Main rd out", "a building statue"]
+  },
+  {
+      "id": 8,
+      "locationName": "Matterhorn",
+      "description": "a refreshment establishment",
+      "latitude": -41.292486,
+      "longitude": 174.775880,
+      "imgUrl": "",
+      "timeLimit": 480,
+      "distanceInMeters": 700,
+      "hint": ["dine in Cuba", "A Swiss peak"]
+  },
+  {
+      "id": 9,
+      "locationName": "Large marble ball",
+      "description": "Museum of New Zealand",
+      "latitude": -41.290731,
+      "longitude": 174.781146,
+      "imgUrl": "",
+      "timeLimit": 480,
+      "distanceInMeters": 650,
+      "hint": ["It floats in an entrance", "It is not a marble"]
+  },
+  {
+      "id": 10,
+      "locationName": "Former Post and Telegraph Building",
+      "description": "Historic building",
+      "latitude": -41.290832,
+      "longitude": 174.784614,
+      "imgUrl": "",
+      "timeLimit": 360,
+      "distanceInMeters": 500,
+      "hint": ["Can't by stamps here anymore", "curvature"]
+  }
+  ]
+}
