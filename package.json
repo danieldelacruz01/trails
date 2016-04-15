@@ -8,7 +8,7 @@
     "start:dev": "webpack-dev-server --inline --content-base public --history-api-fallback",
     "start:prod": "webpack && node server.js"
   },
-  "Trailsitory":{
+  "repository":{
     "type":"git",
     "url": "https://github.com/louise-r-blue/react-router-tutorial"
     },
