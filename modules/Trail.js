@@ -3,6 +3,7 @@ import NavLink from './NavLink'
 import { browserHistory } from 'react-router'
 
 import Checkpoint from './Checkpoint'
+import Timer from './Timer'
 
 var trail = {
   checkpoints: [
@@ -58,6 +59,7 @@ export default React.createClass({
 			<div>
 				<h2>MVP trail</h2>
         <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
+        <Timer secondsRemaining="30"/>
         <button onClick={this.prevCheckpoint}>Previous</button>
         <button onClick={this.nextCheckpoint}>Next</button>
 			</div>
