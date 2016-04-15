@@ -1,5 +1,5 @@
 {
-  "name": "tutorial",
+  "name": "trails",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,9 @@
     "start:dev": "webpack-dev-server --inline --content-base public --history-api-fallback",
     "start:prod": "webpack && node server.js"
   },
-  "Trailsitory":{
+  "repository":{
     "type":"git",
-    "url": "https://github.com/louise-r-blue/react-router-tutorial"
+    "url": "https://github.com/danieldelaruz01/trails"
     },
   "author": "",
   "license": "ISC",
