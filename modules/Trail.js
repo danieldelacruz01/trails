@@ -4,7 +4,7 @@ export default React.createClass({
   render() {
     return(
       <div>
-        <h2>The clue is eastern sunbathing</h2>
+        <h2>Start at this location then ....</h2>
       </div>
     )
   }

@@ -8,7 +8,7 @@ export default React.createClass({
       <div>
       <h2>About</h2>
         <ul>
-          <li><NavLink to="/trail">DanDomLou</NavLink></li>
+          <li><NavLink to="/trail">trailblazers</NavLink></li>
         </ul>
                 {this.props.children}
 
