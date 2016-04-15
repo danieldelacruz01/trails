@@ -71,6 +71,7 @@ Milestones
 * SQL database
 * CSS/making things look pretty
 * TDD unit testing (using Tape)
+* Low cyclomatic complexity, <4 per function
 
 *Louise:*
 * React
