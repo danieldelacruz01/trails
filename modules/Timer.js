@@ -7,11 +7,9 @@ export default React.createClass({
     };
   },
   tick() {
-    this.setState({secondsRemaining: this.state.secondsRemaining - 1});
+    this.setState({secondsRemaining: this.state.secondsRemaining + 1});
   },
   componentDidMount() {
-    console.log(this.state.secondsRemaining)
-    this.setState({secondsRemaining: this.props.secondsRemaining});
     this.interval = setInterval(this.tick, 1000);
   },
   componentWillUnmount() {
@@ -19,7 +17,7 @@ export default React.createClass({
   },
   render() {
     return (
-      <div>Seconds Remaining: {this.state.secondsRemaining}</div>
+      <div>Time elapsed: {this.state.secondsRemaining}</div>
     );
   }
 });

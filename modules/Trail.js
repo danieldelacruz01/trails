@@ -26,25 +26,33 @@ var trail = {
       timeLimit: 240,
       distance: 400,
       description: "good place to eat on your lunch break"
+    },
+    {
+      name:"Civic Square",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44663064.jpg",
+      latitude: -41.288817,
+      longitude: 174.777226,
+      hint: "giant floating ball thing",
+      timeLimit: 480,
+      distance: 400,
+      description: "good place to eat on your lunch break"
     }
   ]
 }
 
 export default React.createClass({
-
   getInitialState(){
-    return {currentCheckpoint: 0}
+    return {currentCheckpoint: 0, timeRemaining: 0}
   },
-
-  nextCheckpoint(e) {
+	nextCheckpoint(e) {
     e.preventDefault()
     if (this.state.currentCheckpoint < trail.checkpoints.length - 1){
 	    this.setState({
-	      currentCheckpoint: this.state.currentCheckpoint + 1
+	      currentCheckpoint: this.state.currentCheckpoint + 1,
+	      timeRemaining: this.state.timeRemaining + trail.checkpoints[this.state.currentCheckpoint+1].timeLimit
 	    });
     }
   },
-
   prevCheckpoint(e) {
     e.preventDefault()
     if (this.state.currentCheckpoint > 0){	
@@ -53,16 +61,24 @@ export default React.createClass({
 	    });
     }
   },
-
 	render(){
+		if (this.state.currentCheckpoint === 0){
+		  return (
+				<div>
+					<h2>MVP trail</h2>
+	        <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
+	        <button onClick={this.nextCheckpoint}>Start</button>
+				</div>
+			)
+		}
 		return (
 			<div>
 				<h2>MVP trail</h2>
         <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
-        <Timer secondsRemaining="30"/>
+        <Timer/>
         <button onClick={this.prevCheckpoint}>Previous</button>
         <button onClick={this.nextCheckpoint}>Next</button>
 			</div>
-		)
+		)		
 	}
 })
