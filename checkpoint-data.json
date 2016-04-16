@@ -1,0 +1,113 @@
+"checkpoints": [
+      {
+      "id": 1,
+      "locationName": "Bucket Fountain",
+      "description": "bucket and water feature",
+      "latitude": -41.292196,
+      "longitude": 174.776364,
+      "imgUrl": "http://www.cestchristine.com/wp-content/uploads/2011/10/IMG_4904.jpg",
+      "timeLimit": null,
+      "distanceInMeters": null,
+      "hint": ["Farmers are near", "Where's Havana?"]
+      },
+      {
+      "id": 2,
+      "locationName": "Civic Square",
+      "description": "public space with galleries",
+      "latitude": -41.288668,
+      "longitude": 174.777244,
+      "imgUrl": "http://www.odt.co.nz/files/story/2012/06/ian_athfield_s_influence_on_civic_square_wellingto_4fed827119.JPG",
+      "timeLimit": 240,
+      "distanceInMeters": 400,
+      "hint": ["Place of books", "How civil of you"]
+      },
+      {
+      "id": 3,
+      "locationName": "Bronze Statue",
+      "description": "On the harbour",
+      "latitude": -41.288668,
+      "longitude": 174.777244,
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/16043343.jpg",
+      "timeLimit": 480,
+      "distanceInMeters": 650,
+      "hint": ["Not Te Mama", "On the waters edge"]
+      },
+      {
+      "id": 4,
+      "locationName": "Steel movie camera statue",
+      "description": "Scaled up movie camera on tripod",
+      "latitude": -41.294373,
+      "longitude": 174.784174,
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/8917895.jpg",
+      "timeLimit": 540,
+      "distanceInMeters": 650,
+      "hint": ["Not an embassy", "Cambridge, not England"]
+      },
+      {
+      "id": 5,
+      "locationName": "The Basin Reserve",
+      "description": "Great for a round of cricket",
+      "latitude": -41.300142,
+      "longitude": 174.780456,
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/17236291.jpg",
+      "timeLimit": 360,
+      "distanceInMeters": 750,
+      "hint": ["No flyover's here!", "A round-about there"]
+      },
+      {
+      "id": 6,
+      "locationName": "War Memorial",
+      "description": "National war memorial park",
+      "latitude": -41.299271,
+      "longitude": 174.776361,
+      "imgUrl": "http://cdn.eventfinda.co.nz/uploads/locations/transformed/119918-5236-34.jpg",
+      "timeLimit": 360,
+      "distanceInMeters": 500,
+      "hint": ["Massive monolith", "Students mill about"]
+      },
+      {
+      "id": 7,
+      "locationName": "Footscray ave/Karo Dr",
+      "description": "Historic Buildings",
+      "latitude": -41.296580,
+      "longitude": 174.772576,
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/63922975.jpg",
+      "timeLimit": 660,
+      "distanceInMeters": 900,
+      "hint": ["Main rd out", "Colourful exterior"]
+      },
+      {
+      "id": 8,
+      "locationName": "Matterhorn",
+      "description": "a refreshment establishment",
+      "latitude": -41.292486,
+      "longitude": 174.775880,
+      "imgUrl": "http://cdn1.buuteeq.com/upload/24280/matterhorn_wellington_nz_credit_jesssilk_highres_cmyk-6.JPG.1920x810_default.jpeg",
+      "timeLimit": 480,
+      "distanceInMeters": 700,
+      "hint": ["Dine on a peak", "Horns matter"]
+      },
+      {
+      "id": 9,
+      "locationName": "Large marble ball",
+      "description": "Museum of New Zealand",
+      "latitude": -41.290731,
+      "longitude": 174.781146,
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/20108778.jpg",
+      "timeLimit": 480,
+      "distanceInMeters": 650,
+      "hint": ["Floats in an entrance", "It is not a marble"]
+      },
+      {
+      "id": 10,
+      "locationName": "Former Post and Telegraph Building",
+      "description": "Historic building",
+      "latitude": -41.290832,
+      "longitude": 174.784614,
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/37764039.jpg",
+      "timeLimit": 360,
+      "distanceInMeters": 500,
+      "hint": ["Can't by stamps here anymore", "curvature"]
+      }
+]
+
