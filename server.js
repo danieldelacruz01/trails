@@ -18,8 +18,7 @@ app.get('/', function (req, res) {
 app.get('/v1/trail', function (req, res) {
   fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
     if (err) throw err;
-    console.log("data", data);
-    res.json(JSON.parse(data));
+   res.json(JSON.parse(data));
   });
     console.log('hello trailblazer here is your data')
    //res.send("hello trailblazer here is your data",data);
