@@ -28,25 +28,31 @@ app.get('/v1/runs', function (req,res) {
     if(err) throw err;
     res.json(JSON.parse(data));
   });
-  console.log('hello dandonlou here is runs data')
+  console.log('hello dandonlou here is runs data',data)
   });
-
 var data = {
            "id": 4,
            "startTime": 360,
            "endTime": 60,
-           "userId": 4,
+           "userId": 4
           }
 
 app.post('/v1/runs', function (req, res) {
-   fs.writeFile('runs.json', 'utf8', (err,data) => {
+  fs.writeFile('runs.json', 'data', 'utf8', (err) => {
      if(err) throw err;
-     res.send('Post request')
-     res.send(JSON.stringify(data));
-   });
+     //res.send('Post request')
+     res.json(JSON.stringify("post request", data));
+  });
    console.log("New data sent to file")
 });
 
+app.get('/v1/leaderboard', function (req,res){
+  fs.readFile('leaderboard.json', 'utf8', (err,data) => {
+    if(err) throw err;
+    res.json(JSON.parse(data));
+  });
+  console.log("Leaderboard data", data)
+})
 
 
 var PORT = process.env.PORT || 8080
