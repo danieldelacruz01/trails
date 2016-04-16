@@ -1,5 +1,5 @@
-trail = {
-  "checkpoints": [{
+"checkpoints": [
+      {
       "id": 1,
       "locationName": "Bucket Fountain",
       "description": "bucket and water feature",
@@ -9,8 +9,8 @@ trail = {
       "timeLimit": null,
       "distanceInMeters": null,
       "hint": ["Farmers are near", "Where's Havana?"]
-  },
-  {
+      },
+      {
       "id": 2,
       "locationName": "Civic Square",
       "description": "public space with galleries",
@@ -20,41 +20,41 @@ trail = {
       "timeLimit": 240,
       "distanceInMeters": 400,
       "hint": ["Place of books", "How civil of you"]
-  },
-  {
+      },
+      {
       "id": 3,
       "locationName": "Bronze Statue",
       "description": "On the harbour",
       "latitude": -41.288668,
       "longitude": 174.777244,
-      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/16043343.jpg",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/16043343.jpg",
       "timeLimit": 480,
       "distanceInMeters": 650,
       "hint": ["Not Te Mama", "On the waters edge"]
-  },
-  {
+      },
+      {
       "id": 4,
       "locationName": "Steel movie camera statue",
       "description": "Scaled up movie camera on tripod",
       "latitude": -41.294373,
       "longitude": 174.784174,
-      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/8917895.jpg",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/8917895.jpg",
       "timeLimit": 540,
       "distanceInMeters": 650,
       "hint": ["Not an embassy", "Cambridge, not England"]
-  },
-  {
+      },
+      {
       "id": 5,
       "locationName": "The Basin Reserve",
       "description": "Great for a round of cricket",
       "latitude": -41.300142,
       "longitude": 174.780456,
-      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/17236291.jpg",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/17236291.jpg",
       "timeLimit": 360,
       "distanceInMeters": 750,
       "hint": ["No flyover's here!", "A round-about there"]
-  },
-  {
+      },
+      {
       "id": 6,
       "locationName": "War Memorial",
       "description": "National war memorial park",
@@ -64,19 +64,19 @@ trail = {
       "timeLimit": 360,
       "distanceInMeters": 500,
       "hint": ["Massive monolith", "Students mill about"]
-  },
-  {
+      },
+      {
       "id": 7,
       "locationName": "Footscray ave/Karo Dr",
       "description": "Historic Buildings",
       "latitude": -41.296580,
       "longitude": 174.772576,
-      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/63922975.jpg",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/63922975.jpg",
       "timeLimit": 660,
       "distanceInMeters": 900,
       "hint": ["Main rd out", "Colourful exterior"]
-  },
-  {
+      },
+      {
       "id": 8,
       "locationName": "Matterhorn",
       "description": "a refreshment establishment",
@@ -86,19 +86,19 @@ trail = {
       "timeLimit": 480,
       "distanceInMeters": 700,
       "hint": ["Dine on a peak", "Horns matter"]
-  },
-  {
+      },
+      {
       "id": 9,
       "locationName": "Large marble ball",
       "description": "Museum of New Zealand",
       "latitude": -41.290731,
       "longitude": 174.781146,
-      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/20108778.jpg",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/medium/20108778.jpg",
       "timeLimit": 480,
       "distanceInMeters": 650,
       "hint": ["Floats in an entrance", "It is not a marble"]
-  },
-  {
+      },
+      {
       "id": 10,
       "locationName": "Former Post and Telegraph Building",
       "description": "Historic building",
@@ -108,6 +108,6 @@ trail = {
       "timeLimit": 360,
       "distanceInMeters": 500,
       "hint": ["Can't by stamps here anymore", "curvature"]
-  }
-  ]
-}
+      }
+]
+
