@@ -37,20 +37,23 @@ export default React.createClass({
 
   nextCheckpoint(e) {
     e.preventDefault()
-    this.setState({
-      currentCheckpoint: this.state.currentCheckpoint + 1
-    });
+    if (this.state.currentCheckpoint < trail.checkpoints.length - 1){
+	    this.setState({
+	      currentCheckpoint: this.state.currentCheckpoint + 1
+	    });
+    }
   },
 
   prevCheckpoint(e) {
     e.preventDefault()
-    this.setState({
-      currentCheckpoint: this.state.currentCheckpoint - 1
-    });
+    if (this.state.currentCheckpoint > 0){	
+	    this.setState({
+	      currentCheckpoint: this.state.currentCheckpoint - 1
+	    });
+    }
   },
 
 	render(){
-    console.log(this.state, "this is the trail state")
 		return (
 			<div>
 				<h2>MVP trail</h2>
