@@ -1,8 +1,9 @@
 import React from 'react'
 import NavLink from './NavLink'
 import { browserHistory } from 'react-router'
-
+import location from '../models/location.js'
 import Checkpoint from './Checkpoint'
+import Promise from 'promise'
 
 var trail = {
   checkpoints: [
@@ -29,6 +30,7 @@ var trail = {
   ]
 }
 
+
 export default React.createClass({
 
   getInitialState(){
@@ -37,16 +39,17 @@ export default React.createClass({
 
   nextCheckpoint(e) {
     e.preventDefault()
-    if (this.state.currentCheckpoint < trail.checkpoints.length - 1){
-	    this.setState({
-	      currentCheckpoint: this.state.currentCheckpoint + 1
-	    });
-    }
+    var currentCheckpoint = this.state.currentCheckpoint
+    location.verifyUserPosition(trail.checkpoints[currentCheckpoint])
+      .then(function(pass){
+        console.log(pass)
+      })
+      .catch(function(error){})
   },
 
   prevCheckpoint(e) {
     e.preventDefault()
-    if (this.state.currentCheckpoint > 0){	
+    if (this.state.currentCheckpoint > 0){
 	    this.setState({
 	      currentCheckpoint: this.state.currentCheckpoint - 1
 	    });

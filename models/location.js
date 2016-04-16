@@ -1,14 +1,19 @@
+var Promise = require('promise')
 
 function getUserLocation() {
-  if (navigator.geolocation) {
-    var userCoords = navigator.geolocation.getCurrentPosition(function(position){
-      return position.coords
-    })
-    return userCoords
-  }
-  else {
-    x.innerHTML = 'Geolocation not supported by this browser'
-  }
+  var promise = new Promise (function (resolve, reject) {
+    if (navigator.geolocation) {
+      var userCoords = navigator.geolocation.getCurrentPosition(function(position){
+        console.log('GUL', position)
+        resolve(position.coords)
+      })
+
+    }
+    else {
+      reject('Geolocation not supported by this browser')
+    }
+  })
+ return promise
 }
 
 // function showPosition(position) {
@@ -16,23 +21,22 @@ function getUserLocation() {
 //   "<br>Longitude: " +position.coords.longitude
 // }
 
-function compareUserToCheckpoint(checkpointCoords){
-  var range = 0.00005
-  var userCoords = getUserLocation()
+function verifyUserPosition(checkpointCoords){
+  var promise = new Promise(function(resolve,reject){
+    var range = 0.00005
+    getUserLocation()
+      .then(function(userCoords){
+        console.log('VUP', userCoords)
+      })
+      .catch(function(error){})
 
-  return
-   (userCoords.latitude <= checkpointCoords.latitude+range && userCoords.latitude >= checkpointCoords.latitude-range) &&
-   (userCoords.longitude <= checkpointCoords.longitude+range && userCoords.longitude >= checkpointCoords.longitude-range)
+    resolve(
+      (userCoords.latitude <= checkpointCoords.latitude+range && userCoords.latitude >= checkpointCoords.latitude-range) &&
+      (userCoords.longitude <= checkpointCoords.longitude+range && userCoords.longitude >= checkpointCoords.longitude-range)
+    )
+  })
 }
 
-function verifyUserPosition(){
-  if (compareUserToCheckpoint(currentCheckpoint)){
-      nextCheckpoint(currentCheckpoint)
-  }
-  else{
-
-  }
-}
 
 
 function userAtEndOfTrail() {
