@@ -5,10 +5,10 @@ trail = {
       "description": "bucket and water feature",
       "latitude": -41.292196,
       "longitude": 174.776364,
-      "imgUrl": "",
+      "imgUrl": "http://www.cestchristine.com/wp-content/uploads/2011/10/IMG_4904.jpg",
       "timeLimit": null,
       "distanceInMeters": null,
-      "hint": ["Found in Wellingtons famous pedestrianized St", "Where's Havana?"]
+      "hint": ["Farmers are near", "Where's Havana?"]
   },
   {
       "id": 2,
@@ -16,21 +16,21 @@ trail = {
       "description": "public space with galleries",
       "latitude": -41.288668,
       "longitude": 174.777244,
-      "imgUrl": "",
+      "imgUrl": "http://www.odt.co.nz/files/story/2012/06/ian_athfield_s_influence_on_civic_square_wellingto_4fed827119.JPG",
       "timeLimit": 240,
       "distanceInMeters": 400,
-      "hint": ["Near the place of books", "Capital E lives here"]
+      "hint": ["Place of books", "How civil of you"]
   },
   {
       "id": 3,
-      "locationName": "Bronze Male Statue",
-      "description": "Sited on the edge of harbor, north of Te Papa",
+      "locationName": "Bronze Statue",
+      "description": "On the harbour",
       "latitude": -41.288668,
       "longitude": 174.777244,
-      "imgUrl": "",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/16043343.jpg",
       "timeLimit": 480,
       "distanceInMeters": 650,
-      "hint": ["Where is Te Papa", "By the waters edge"]
+      "hint": ["Not Te Mama", "On the waters edge"]
   },
   {
       "id": 4,
@@ -38,10 +38,10 @@ trail = {
       "description": "Scaled up movie camera on tripod",
       "latitude": -41.294373,
       "longitude": 174.784174,
-      "imgUrl": "",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/8917895.jpg",
       "timeLimit": 540,
       "distanceInMeters": 650,
-      "hint": ["The theatre famous for Lord of the Rings", "Somewhere in Cambridge, not England"]
+      "hint": ["Not an embassy", "Cambridge, not England"]
   },
   {
       "id": 5,
@@ -49,10 +49,10 @@ trail = {
       "description": "Great for a round of cricket",
       "latitude": -41.300142,
       "longitude": 174.780456,
-      "imgUrl": "",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/17236291.jpg",
       "timeLimit": 360,
       "distanceInMeters": 750,
-      "hint": ["No flyover's here!", "A round-a-bout here"]
+      "hint": ["No flyover's here!", "A round-about there"]
   },
   {
       "id": 6,
@@ -60,10 +60,10 @@ trail = {
       "description": "National war memorial park",
       "latitude": -41.299271,
       "longitude": 174.776361,
-      "imgUrl": "",
+      "imgUrl": "http://cdn.eventfinda.co.nz/uploads/locations/transformed/119918-5236-34.jpg",
       "timeLimit": 360,
       "distanceInMeters": 500,
-      "hint": ["Massive Massey", "Students mill about"]
+      "hint": ["Massive monolith", "Students mill about"]
   },
   {
       "id": 7,
@@ -71,10 +71,10 @@ trail = {
       "description": "Historic Buildings",
       "latitude": -41.296580,
       "longitude": 174.772576,
-      "imgUrl": "",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/63922975.jpg",
       "timeLimit": 660,
       "distanceInMeters": 900,
-      "hint": ["Main rd out", "a building statue"]
+      "hint": ["Main rd out", "Colourful exterior"]
   },
   {
       "id": 8,
@@ -82,10 +82,10 @@ trail = {
       "description": "a refreshment establishment",
       "latitude": -41.292486,
       "longitude": 174.775880,
-      "imgUrl": "",
+      "imgUrl": "http://cdn1.buuteeq.com/upload/24280/matterhorn_wellington_nz_credit_jesssilk_highres_cmyk-6.JPG.1920x810_default.jpeg",
       "timeLimit": 480,
       "distanceInMeters": 700,
-      "hint": ["dine in Cuba", "A Swiss peak"]
+      "hint": ["Dine on a peak", "Horns matter"]
   },
   {
       "id": 9,
@@ -93,10 +93,10 @@ trail = {
       "description": "Museum of New Zealand",
       "latitude": -41.290731,
       "longitude": 174.781146,
-      "imgUrl": "",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/20108778.jpg",
       "timeLimit": 480,
       "distanceInMeters": 650,
-      "hint": ["It floats in an entrance", "It is not a marble"]
+      "hint": ["Floats in an entrance", "It is not a marble"]
   },
   {
       "id": 10,
@@ -104,7 +104,7 @@ trail = {
       "description": "Historic building",
       "latitude": -41.290832,
       "longitude": 174.784614,
-      "imgUrl": "",
+      "imgUrl": "https://static.panoramio.com.storage.googleapis.com/photos/med/37764039.jpg",
       "timeLimit": 360,
       "distanceInMeters": 500,
       "hint": ["Can't by stamps here anymore", "curvature"]
