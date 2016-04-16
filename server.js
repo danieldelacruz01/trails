@@ -18,11 +18,36 @@ app.get('/', function (req, res) {
 app.get('/v1/trail', function (req, res) {
   fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
     if (err) throw err;
-   res.json(JSON.parse(data));
+    res.json(JSON.parse(data));
   });
-    console.log('hello trailblazer here is your data')
-   //res.send("hello trailblazer here is your data",data);
+  console.log('hello trailblazer here is your data')
+  });
+
+app.get('/v1/runs', function (req,res) {
+  fs.readFile('runs.json', 'utf8', (err, data) => {
+    if(err) throw err;
+    res.json(JSON.parse(data));
+  });
+  console.log('hello dandonlou here is runs data')
+  });
+
+var data = {
+           "id": 4,
+           "startTime": 360,
+           "endTime": 60,
+           "userId": 4,
+          }
+
+app.post('/v1/runs', function (req, res) {
+   fs.writeFile('runs.json', 'utf8', (err,data) => {
+     if(err) throw err;
+     res.send('Post request')
+     res.send(JSON.stringify(data));
+   });
+   console.log("New data sent to file")
 });
+
+
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {

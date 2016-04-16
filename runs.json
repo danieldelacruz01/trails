@@ -1,0 +1,25 @@
+{ "runs": [
+          {
+           "id": 1,
+           "startTime": 240,
+           "endTime": 30,
+           "userId": 1,
+           "trailId": 1
+          },
+          {
+           "id": 2,
+           "startTime": 240,
+           "endTime": 60,
+           "userId": 2,
+           "trailId": 1
+          },
+          {
+           "id": 3,
+           "startTime": 240,
+           "endTime": -60,
+           "userId": 3,
+           "trailId": 1
+          }
+          ]
+
+}
