@@ -27,9 +27,7 @@ function verifyUserPosition(checkpointCoords){
     var range = 0.00005
     getUserLocation()
       .then(function(userCoords){
-        console.log('VUP', userCoords)
-        console.log((userCoords.latitude <= checkpointCoords.latitude+range && userCoords.latitude >= checkpointCoords.latitude-range) &&
-      (userCoords.longitude <= checkpointCoords.longitude+range && userCoords.longitude >= checkpointCoords.longitude-range))
+        console.log('VUP', checkpointCoords)
     resolve(
       (userCoords.latitude <= checkpointCoords.latitude+range && userCoords.latitude >= checkpointCoords.latitude-range) &&
       (userCoords.longitude <= checkpointCoords.longitude+range && userCoords.longitude >= checkpointCoords.longitude-range)
@@ -39,6 +37,7 @@ function verifyUserPosition(checkpointCoords){
       .catch(function(error){})
 
   })
+  return promise
 }
 
 

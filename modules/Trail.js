@@ -8,6 +8,16 @@ import Promise from 'promise'
 var trail = {
   checkpoints: [
     {
+      name:"EDA Campus",
+      imgUrl: "https://lh3.googleusercontent.com/Wm9kLUI11vIwyMEkUb40jtH13n74CoV7XaTgOJLZAELLbqxndQnEY30_579P5L0wAu8=w2048-h1365-rw-no",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "you are sitting right there!",
+      timeLimit: 240,
+      distance: 1000,
+      description: "good place to learn to code"
+    },
+    {
       name:"Bucket Fountain",
       imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
       latitude: -41.292271,
@@ -42,7 +52,7 @@ export default React.createClass({
     var currentCheckpoint = this.state.currentCheckpoint
     location.verifyUserPosition(trail.checkpoints[currentCheckpoint])
       .then(function(pass){
-        console.log(pass)
+        console.log('!', pass)
       })
       .catch(function(error){})
   },

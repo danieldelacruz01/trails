@@ -25145,6 +25145,15 @@
 
 	var trail = {
 	  checkpoints: [{
+	    name: "EDA Campus",
+	    imgUrl: "https://lh3.googleusercontent.com/Wm9kLUI11vIwyMEkUb40jtH13n74CoV7XaTgOJLZAELLbqxndQnEY30_579P5L0wAu8=w2048-h1365-rw-no",
+	    latitude: -41.296912,
+	    longitude: 174.773789,
+	    hint: "you are sitting right there!",
+	    timeLimit: 240,
+	    distance: 1000,
+	    description: "good place to learn to code"
+	  }, {
 	    name: "Bucket Fountain",
 	    imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
 	    latitude: -41.292271,
@@ -25174,7 +25183,7 @@
 	    e.preventDefault();
 	    var currentCheckpoint = this.state.currentCheckpoint;
 	    _location2.default.verifyUserPosition(trail.checkpoints[currentCheckpoint]).then(function (pass) {
-	      console.log(pass);
+	      console.log('!', pass);
 	    }).catch(function (error) {});
 	  },
 	  prevCheckpoint: function prevCheckpoint(e) {
@@ -25241,11 +25250,11 @@
 	    console.log('hoiuhiojoi');
 	    var range = 0.00005;
 	    getUserLocation().then(function (userCoords) {
-	      console.log('VUP', userCoords);
-	      console.log(userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range);
+	      console.log('VUP', checkpointCoords);
 	      resolve(userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range);
 	    }).catch(function (error) {});
 	  });
+	  return promise;
 	}
 
 	function userAtEndOfTrail() {}
