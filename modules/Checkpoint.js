@@ -6,7 +6,6 @@ export default React.createClass({
     var currentCheckpoint = this.props.checkpoint
     return (
       <div>
-        <h2>Checkpoint</h2>
         <img src={currentCheckpoint.imgUrl} className="checkpoint-image"/>
         <ul>
           <li>Hint: {currentCheckpoint.hint}</li>
