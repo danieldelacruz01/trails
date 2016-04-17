@@ -11,12 +11,10 @@ request
   .end(function(err,res){
     trail = res.body
   })
-
 export default React.createClass({
   getInitialState(){
     return {currentCheckpoint: 0}
   },
-
   nextCheckpoint(e) {
     e.preventDefault()
     if (this.state.currentCheckpoint < trail.checkpoints.length - 1){
@@ -25,7 +23,6 @@ export default React.createClass({
 	    });
     }
   },
-
   prevCheckpoint(e) {
     e.preventDefault()
     if (this.state.currentCheckpoint > 0){	
@@ -34,7 +31,6 @@ export default React.createClass({
 	    });
     }
   },
-
 	render(){
 		return (
 			<div>

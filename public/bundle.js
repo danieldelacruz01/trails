@@ -25143,7 +25143,6 @@
 	_superagent2.default.get('./v1/trail').end(function (err, res) {
 	  trail = res.body;
 	});
-
 	exports.default = _react2.default.createClass({
 	  displayName: 'Trail',
 	  getInitialState: function getInitialState() {
@@ -26701,7 +26700,7 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -26714,38 +26713,38 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
-	  displayName: 'Checkpoint',
+	  displayName: "Checkpoint",
 	  render: function render() {
 	    var currentCheckpoint = this.props.checkpoint;
 	    return _react2.default.createElement(
-	      'div',
+	      "div",
 	      null,
 	      _react2.default.createElement(
-	        'h2',
+	        "h2",
 	        null,
-	        'Checkpoint'
+	        "Checkpoint"
 	      ),
-	      _react2.default.createElement('img', { src: currentCheckpoint.imgUrl }),
+	      _react2.default.createElement("img", { src: currentCheckpoint.imgUrl, className: "checkpoint-image" }),
 	      _react2.default.createElement(
-	        'ul',
+	        "ul",
 	        null,
 	        _react2.default.createElement(
-	          'li',
+	          "li",
 	          null,
-	          'Hint: ',
+	          "Hint: ",
 	          currentCheckpoint.hint
 	        ),
 	        _react2.default.createElement(
-	          'li',
+	          "li",
 	          null,
-	          'Distance from last checkpoint: ',
+	          "Distance from last checkpoint: ",
 	          currentCheckpoint.distance,
-	          ' metres'
+	          " metres"
 	        ),
 	        _react2.default.createElement(
-	          'li',
+	          "li",
 	          null,
-	          'Description: ',
+	          "Description: ",
 	          currentCheckpoint.description
 	        )
 	      )

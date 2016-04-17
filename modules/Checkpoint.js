@@ -6,7 +6,7 @@ export default React.createClass({
     return (
       <div>
         <h2>Checkpoint</h2>
-        <img src={currentCheckpoint.imgUrl} />
+        <img src={currentCheckpoint.imgUrl} className="checkpoint-image"/>
         <ul>
           <li>Hint: {currentCheckpoint.hint}</li>
           <li>Distance from last checkpoint: {currentCheckpoint.distance} metres</li>
