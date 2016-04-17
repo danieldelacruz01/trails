@@ -6,20 +6,15 @@ function convertToMinutes(time){
   var seconds = date.getSeconds();
   if (hour<10 ) {
     hour = "0" + hour;
-    if(minutes<10){
-      minutes = "0" + minutes;
-      if(seconds<10){
-        seconds = "0" + seconds;
-      }
-    }
-    console.log("Your time is " + hour + ":" + minutes + ":" + seconds)
   }
-  else {
-  console.log("Your time is " + hour + ":" + minutes + ":" + seconds)
+  if(minutes<10){
+    minutes = "0" + minutes;
   }
+  if(seconds<10){
+    seconds = "0" + seconds;
+  }
+  console.log("Your time is " + hour + ":" + minutes + ":" + seconds);
 }
-
-convertToMinutes(1460880744012)
 
 
 
