@@ -10,6 +10,9 @@ console.log("server running")
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(function(req, res, next){
+  res.status(404).redirect('/')
+})
 // send all requests to index.html so browserHistory in React Router works
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
