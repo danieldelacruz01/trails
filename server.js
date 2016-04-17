@@ -21,11 +21,57 @@ app.get('/', function (req, res) {
 app.get('/v1/trail', function (req, res) {
   fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
     if (err) throw err;
-   res.json(JSON.parse(data));
+    res.json(JSON.parse(data));
   });
-    console.log('hello trailblazer here is your data')
-   //res.send("hello trailblazer here is your data",data);
+  console.log('hello trailblazer here is your data')
 });
+
+app.get('/v1/runs', function (req,res) {
+  fs.readFile('runs.json', 'utf8', (err, data) => {
+    if(err) throw err;
+    res.json(JSON.parse(data));
+    console.log('hello dandonlou here is runs data',data)
+  });
+});
+
+app.post('/v1/runs', function (req, res) {
+  var data = {
+   "id": 4,
+   "startTime": 360,
+   "endTime": 60,
+   "userId": 4
+ }
+ fs.writeFile('runs.json', 'data', 'utf8', (err) => {
+   if(err) throw err;
+     //res.send('Post request')
+     res.json(JSON.stringify("post request", data));
+   });
+ console.log("New data sent to file")
+});
+
+app.get('/v1/leaderboard', function (req,res){
+  fs.readFile('leaderboard.json', 'utf8', (err,data) => {
+    if(err) throw err;
+    res.json(JSON.parse(data));
+    console.log("Leaderboard data", data)
+  });
+});
+
+app.post('/v1/leaderboard', function (req, res) {
+  var data = {
+    "id": 8,
+    "bestTime": 5800,
+    "userId": 4,
+    "trailId": 1
+  }
+  fs.writeFile('leaderboard.json', 'data', 'utf8', (err) => {
+    if(err) throw err;
+    res.json(JSON.stringify(data));
+    console.log("leaderboard updated")
+  });
+});
+
+
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {
