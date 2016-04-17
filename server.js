@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var compression = require('compression');
 var fs = require('fs');
 
@@ -10,16 +11,14 @@ var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 var app = express()
 
-//var runsData = require('../../models/runsData')
 
 app.use(compression())
+app.use(bodyParser.json());
 console.log("server running")
+
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
 
-// app.use(function(req, res, next){
-//   res.status(404).redirect('/')
-// })
 // send all requests to index.html so browserHistory in React Router works
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
@@ -39,34 +38,22 @@ app.get('/v1/runs', function (req,res,next) {
     .then(function(resp){
       //console.log(res)
       res.send(resp)
-
     })
     .catch(function(error){
       console.log(error)
     });
 });
 
-// app.get('/v1/runs', function (req,res) {
-//   fs.readFile('runs.json', 'utf8', (err, data) => {
-//     if(err) throw err;
-//     res.json(JSON.parse(data));
-//     console.log('hello dandonlou here is runs data',data)
-//   });
-// });
-
 app.post('/v1/runs', function (req, res) {
-  var data = {
-   "id": 4,
-   "startTime": 360,
-   "endTime": 60,
-   "userId": 4
- }
- fs.writeFile('runs.json', 'data', 'utf8', (err) => {
-   if(err) throw err;
-     //res.send('Post request')
-     res.json(JSON.stringify("post request", data));
-   });
- console.log("New data sent to file")
+  console.log("write to db")
+  knex.insert(req.body).into('runs')
+    .then(function(resp){
+      console.log(resp)
+      //res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    });
 });
 
 app.get('/v1/leaderboard', function (req,res){
