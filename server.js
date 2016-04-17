@@ -1,9 +1,16 @@
-var express = require('express')
-var path = require('path')
-var compression = require('compression')
-var fs = require('fs')
+var express = require('express');
+var path = require('path');
+var compression = require('compression');
+var fs = require('fs');
+
+var Knex = require('knex')
+var knexConfig = require('./knexfile')
+
+var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 var app = express()
+
+//var runsData = require('../../models/runsData')
 
 app.use(compression())
 console.log("server running")
@@ -26,6 +33,18 @@ app.get('/v1/trail', function (req, res) {
   console.log('hello trailblazer here is your data')
 });
 
+// app.get('/v1/runs', function (req,res,next) {
+//   console.log("hello")
+//   knex.select('*').from('runs')
+//     .then(function(res){
+//       //console.log(res)
+//       res.json(res)
+
+//     })
+//     .catch(function(error){
+//       console.log(error)
+//     });
+// });
 app.get('/v1/runs', function (req,res) {
   fs.readFile('runs.json', 'utf8', (err, data) => {
     if(err) throw err;
