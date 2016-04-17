@@ -18,8 +18,8 @@ function verifyUserPosition(checkpointCoords){
     getUserLocation()
       .then(function(userCoords){
         resolve(
-          (userCoords.latitude <= checkpointCoords.latitude+range && userCoords.latitude >= checkpointCoords.latitude-range) &&
-          (userCoords.longitude <= checkpointCoords.longitude+range && userCoords.longitude >= checkpointCoords.longitude-range)
+          (userCoords.latitude<=checkpointCoords.latitude+range && userCoords.latitude>=checkpointCoords.latitude-range) &&
+          (userCoords.longitude<=checkpointCoords.longitude+range && userCoords.longitude>=checkpointCoords.longitude-range)
         )
       })
       .catch(function(error){})
@@ -28,11 +28,6 @@ function verifyUserPosition(checkpointCoords){
 }
 
 
-function userAtEndOfTrail() {
-
-
-}
-
 module.exports = {
-  verifyUserPosition: verifyUserPosition
+  verifyUserPosition: verifyUserPosition,
 }
