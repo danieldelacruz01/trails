@@ -84,8 +84,6 @@
 	  )
 	), document.getElementById('app'));
 
-	console.log("DanDomLou - this is the index.js");
-
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -25116,7 +25114,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+			value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -25137,55 +25135,79 @@
 
 	var _Checkpoint2 = _interopRequireDefault(_Checkpoint);
 
+	var _Timer = __webpack_require__(228);
+
+	var _Timer2 = _interopRequireDefault(_Timer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var trail = {};
 	_superagent2.default.get('./v1/trail').end(function (err, res) {
-	  trail = res.body;
+			trail = res.body;
 	});
+
 	exports.default = _react2.default.createClass({
-	  displayName: 'Trail',
-	  getInitialState: function getInitialState() {
-	    return { currentCheckpoint: 0 };
-	  },
-	  nextCheckpoint: function nextCheckpoint(e) {
-	    e.preventDefault();
-	    if (this.state.currentCheckpoint < trail.checkpoints.length - 1) {
-	      this.setState({
-	        currentCheckpoint: this.state.currentCheckpoint + 1
-	      });
-	    }
-	  },
-	  prevCheckpoint: function prevCheckpoint(e) {
-	    e.preventDefault();
-	    if (this.state.currentCheckpoint > 0) {
-	      this.setState({
-	        currentCheckpoint: this.state.currentCheckpoint - 1
-	      });
-	    }
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'MVP trail'
-	      ),
-	      _react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.prevCheckpoint },
-	        'Previous'
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.nextCheckpoint },
-	        'Next'
-	      )
-	    );
-	  }
+			displayName: 'Trail',
+			getInitialState: function getInitialState() {
+					return { currentCheckpoint: 0, timeRemaining: 0 };
+			},
+			nextCheckpoint: function nextCheckpoint(e) {
+					e.preventDefault();
+					if (this.state.currentCheckpoint < trail.checkpoints.length - 1) {
+							this.setState({
+									currentCheckpoint: this.state.currentCheckpoint + 1,
+									timeRemaining: this.state.timeRemaining + trail.checkpoints[this.state.currentCheckpoint + 1].timeLimit
+							});
+					}
+			},
+			prevCheckpoint: function prevCheckpoint(e) {
+					e.preventDefault();
+					if (this.state.currentCheckpoint > 0) {
+							this.setState({
+									currentCheckpoint: this.state.currentCheckpoint - 1
+							});
+					}
+			},
+			render: function render() {
+					if (this.state.currentCheckpoint === 0) {
+							return _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+											'h2',
+											null,
+											'MVP trail'
+									),
+									_react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
+									_react2.default.createElement(
+											'button',
+											{ onClick: this.nextCheckpoint },
+											'Start'
+									)
+							);
+					}
+					return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(
+									'h2',
+									null,
+									'MVP trail'
+							),
+							_react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
+							_react2.default.createElement(_Timer2.default, null),
+							_react2.default.createElement(
+									'button',
+									{ onClick: this.prevCheckpoint },
+									'Previous'
+							),
+							_react2.default.createElement(
+									'button',
+									{ onClick: this.nextCheckpoint },
+									'Next'
+							)
+					);
+			}
 	});
 
 /***/ },
@@ -26700,7 +26722,67 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Timer = __webpack_require__(228);
+
+	var _Timer2 = _interopRequireDefault(_Timer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'Checkpoint',
+	  render: function render() {
+	    var currentCheckpoint = this.props.checkpoint;
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Checkpoint'
+	      ),
+	      _react2.default.createElement('img', { src: currentCheckpoint.imgUrl, className: 'checkpoint-image' }),
+	      _react2.default.createElement(
+	        'ul',
+	        null,
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Hint: ',
+	          currentCheckpoint.hint
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Distance from last checkpoint: ',
+	          currentCheckpoint.distance,
+	          ' metres'
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Description: ',
+	          currentCheckpoint.description
+	        )
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -26713,41 +26795,27 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
-	  displayName: "Checkpoint",
+	  displayName: 'Timer',
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsRemaining: 0
+	    };
+	  },
+	  tick: function tick() {
+	    this.setState({ secondsRemaining: this.state.secondsRemaining + 1 });
+	  },
+	  componentDidMount: function componentDidMount() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    clearInterval(this.interval);
+	  },
 	  render: function render() {
-	    var currentCheckpoint = this.props.checkpoint;
 	    return _react2.default.createElement(
-	      "div",
+	      'div',
 	      null,
-	      _react2.default.createElement(
-	        "h2",
-	        null,
-	        "Checkpoint"
-	      ),
-	      _react2.default.createElement("img", { src: currentCheckpoint.imgUrl, className: "checkpoint-image" }),
-	      _react2.default.createElement(
-	        "ul",
-	        null,
-	        _react2.default.createElement(
-	          "li",
-	          null,
-	          "Hint: ",
-	          currentCheckpoint.hint
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          null,
-	          "Distance from last checkpoint: ",
-	          currentCheckpoint.distance,
-	          " metres"
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          null,
-	          "Description: ",
-	          currentCheckpoint.description
-	        )
-	      )
+	      'Time elapsed: ',
+	      this.state.secondsRemaining
 	    );
 	  }
 	});
