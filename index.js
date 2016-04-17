@@ -6,6 +6,7 @@ import About from './modules/About'
 import Trail from './modules/Trail'
 import Home from './modules/Home'
 
+
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
@@ -15,6 +16,3 @@ render((
     </Route>
   </Router>
 ), document.getElementById('app'))
-
-console.log("DanDomLou - this is the index.js")
-

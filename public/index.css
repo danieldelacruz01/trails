@@ -1,3 +1,10 @@
+img {
+  max-height: 250px;
+  max-width: 250px;
+}
 .active {
   color: green;
+}
+.checkpoint-image{
+	max-height: 250px;
 }
