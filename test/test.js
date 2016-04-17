@@ -1,5 +1,5 @@
 var test = require('tape')
-//var compareUserToCheckpoint = require('./navigator-test.js')
+var location = require('../models/location.js')
 
 function compareUserToCheckpoint(checkpointCoords, userCoords){
   var range = 0.00005
@@ -16,8 +16,13 @@ var mockUserCoordsObj1 = {latitude: -41.296840800000004, longitude: 174.77381740
 var mockUserCoordsObj2 = {latitude: -41.296700800000004, longitude: 174.77382740000002}
 var mockUserCoordsObj3 = {latitude: -41.29, longitude: 174.77}
 var mockUserCoordsObj4 = {latitude: -41.296840800000004, longitude: 174.77389740000002}
+var mockUserCoordsObj5 = {latitude: -41.296890800000004, longitude: 174.77386740000002}
 
 var checkpointLocation = {latitude: -41.2968, longitude: 174.7738}
+var bucketCoords = {latitude: -41.292285, longitude: 174.776226}
+
+var a = {latitude: -41.2969553, longitude:174.774273}
+var b = {latitude: -41.292302, longitude: 174.776440}
 
 test('Trail checkpoint coords, compare to user coords', function (t) {
    t.true(compareUserToCheckpoint(checkpointLocation, checkpointLocation), 'return identical coords')
@@ -27,12 +32,3 @@ test('Trail checkpoint coords, compare to user coords', function (t) {
    t.false(compareUserToCheckpoint(checkpointLocation, mockUserCoordsObj4),'should not return when one user coord is correct but another is incorrect')
    t.end()
 })
-
-
-
-
-
-
-
-
-
