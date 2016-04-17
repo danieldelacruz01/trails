@@ -3,7 +3,7 @@ var location = require('../models/location.js')
 
 function compareUserToCheckpoint(checkpointCoords, userCoords){
   var range = 0.00005
-  //User coords would be from getUserLocation() in production
+  //User coords would be from g etUserLocation() in production
   if (checkpointCoords.latitude<0) { checkpointCoords.latitude = Math.sqrt(checkpointCoords.latitude*checkpointCoords.latitude) }
   if (userCoords.latitude<0)       { userCoords.latitude = Math.sqrt(userCoords.latitude*userCoords.latitude) }
 
@@ -19,10 +19,6 @@ var mockUserCoordsObj4 = {latitude: -41.296840800000004, longitude: 174.77389740
 var mockUserCoordsObj5 = {latitude: -41.296890800000004, longitude: 174.77386740000002}
 
 var checkpointLocation = {latitude: -41.2968, longitude: 174.7738}
-var bucketCoords = {latitude: -41.292285, longitude: 174.776226}
-
-var a = {latitude: -41.2969553, longitude:174.774273}
-var b = {latitude: -41.292302, longitude: 174.776440}
 
 test('Trail checkpoint coords, compare to user coords', function (t) {
    t.true(compareUserToCheckpoint(checkpointLocation, checkpointLocation), 'return identical coords')
