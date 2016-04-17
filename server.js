@@ -8,18 +8,15 @@ var Knex = require('knex')
 var knexConfig = require('./knexfile')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
-
 var app = express()
 
 
 app.use(compression())
 app.use(bodyParser.json());
-console.log("server running")
 
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
 
-// send all requests to index.html so browserHistory in React Router works
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
@@ -29,7 +26,7 @@ app.get('/v1/trail', function (req, res) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
-  console.log('hello trailblazer here is your data')
+  //console.log('hello trailblazer here is your data')
 });
 
 app.get('/v1/runs', function (req,res,next) {
@@ -44,12 +41,16 @@ app.get('/v1/runs', function (req,res,next) {
     });
 });
 
+app.get('/v1/timestamp', function (req,res) {
+  res.json(Date.now())
+});
+
 app.post('/v1/runs', function (req, res) {
   console.log("write to db")
   knex.insert(req.body).into('runs')
     .then(function(resp){
       console.log(resp)
-      //res.send(resp)
+      res.send(resp)
     })
     .catch(function(error){
       console.log(error)
@@ -60,7 +61,7 @@ app.get('/v1/leaderboard', function (req,res){
   fs.readFile('leaderboard.json', 'utf8', (err,data) => {
     if(err) throw err;
     res.json(JSON.parse(data));
-    console.log("Leaderboard data", data)
+    //console.log("Leaderboard data", data)
   });
 });
 
@@ -77,8 +78,6 @@ app.post('/v1/leaderboard', function (req, res) {
     console.log("leaderboard updated")
   });
 });
-
-
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {

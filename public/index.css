@@ -5,3 +5,6 @@ img {
 .active {
   color: green;
 }
+.checkpoint-image{
+	max-height: 250px;
+}

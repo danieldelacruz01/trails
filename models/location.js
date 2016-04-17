@@ -14,7 +14,7 @@ function getUserLocation() {
 
 function verifyUserPosition(checkpointCoords){
   var promise = new Promise(function(resolve,reject){
-    var range = 0.00005
+    var range = 0.00008
     getUserLocation()
       .then(function(userCoords){
         resolve(

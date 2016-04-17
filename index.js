@@ -16,6 +16,3 @@ render((
     </Route>
   </Router>
 ), document.getElementById('app'))
-
-console.log("DanDomLou - this is the index.js")
-
