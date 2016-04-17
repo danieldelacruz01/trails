@@ -25131,43 +25131,157 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _Checkpoint = __webpack_require__(227);
-
-	var _Checkpoint2 = _interopRequireDefault(_Checkpoint);
-
-	var _Timer = __webpack_require__(228);
+	var _Timer = __webpack_require__(227);
 
 	var _Timer2 = _interopRequireDefault(_Timer);
 
-	var _run = __webpack_require__(229);
+	var _run = __webpack_require__(228);
 
 	var _run2 = _interopRequireDefault(_run);
 
+	var _location = __webpack_require__(239);
+
+	var _location2 = _interopRequireDefault(_location);
+
+	var _Checkpoint = __webpack_require__(240);
+
+	var _Checkpoint2 = _interopRequireDefault(_Checkpoint);
+
+	var _promise = __webpack_require__(229);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var testing = true;
 	var trail = {};
-	_superagent2.default.get('./v1/trail').end(function (err, res) {
-	  trail = res.body;
-	});
-	var runDetails = {};
+	if (testing) {
+	  trail = {
+	    checkpoints: [{
+	      name: "EDA Campus",
+	      imgUrl: "https://lh3.googleusercontent.com/Wm9kLUI11vIwyMEkUb40jtH13n74CoV7XaTgOJLZAELLbqxndQnEY30_579P5L0wAu8=w2048-h1365-rw-no",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "you are sitting right there!",
+	      timeLimit: 240,
+	      distance: 1000,
+	      description: "good place to learn to code"
+	    }, {
+	      name: "Bucket Fountain",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "splash splash",
+	      timeLimit: null,
+	      distance: null,
+	      description: "people like to put dye and/or dishwashing liquid in the water"
+	    }, {
+	      name: "Civic Square",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "giant floating ball thing",
+	      timeLimit: 240,
+	      distance: 400,
+	      description: "good place to eat on your lunch break"
+	    }, {
+	      name: "Five",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "Five splash",
+	      timeLimit: null,
+	      distance: null,
+	      description: "people like to put dye and/or dishwashing liquid in the water"
+	    }, {
+	      name: "Six",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "Six floating ball thing",
+	      timeLimit: 240,
+	      distance: 400,
+	      description: "good place to eat on your lunch break"
+	    }, {
+	      name: "Seven",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "Seven splash",
+	      timeLimit: null,
+	      distance: null,
+	      description: "people like to put dye and/or dishwashing liquid in the water"
+	    }, {
+	      name: "Eight",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "Eight floating ball thing",
+	      timeLimit: 240,
+	      distance: 400,
+	      description: "good place to eat on your lunch break"
+	    }, {
+	      name: "Nine",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "Nine splash",
+	      timeLimit: null,
+	      distance: null,
+	      description: "people like to put dye and/or dishwashing liquid in the water"
+	    }, {
+	      name: "Ten",
+	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+	      latitude: -41.296912,
+	      longitude: 174.773789,
+	      hint: "Ten floating ball thing",
+	      timeLimit: 240,
+	      distance: 400,
+	      description: "good place to eat on your lunch break"
+	    }]
+	  };
+	} else {
+	  _superagent2.default.get('./v1/trail').end(function (err, res) {
+	    trail = res.body;
+	  });
+	}
+	var runDetails = {
+	  startTime: 0,
+	  endTime: 0,
+	  name: ""
+	};
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'Trail',
 	  getInitialState: function getInitialState() {
 	    return { currentCheckpoint: 0 };
 	  },
+	  finishRun: function finishRun(e) {
+	    _run2.default.getTimestamp().then(function (timestamp) {
+	      runDetails.endTime = timestamp;
+	      runDetails.name = "Piet";
+	      _run2.default.postRunDetails(runDetails);
+	    });
+	  },
 	  nextCheckpoint: function nextCheckpoint(e) {
 	    e.preventDefault();
-	    console.log(runDetails);
 	    if (this.state.currentCheckpoint === 0) {
 	      _run2.default.getTimestamp().then(function (timestamp) {
-	        runDetails["startTime"] = timestamp;
+	        runDetails.startTime = timestamp;
 	      });
 	    }
 	    if (this.state.currentCheckpoint < trail.checkpoints.length - 1) {
-	      this.setState({
-	        currentCheckpoint: this.state.currentCheckpoint + 1
-	      });
+	      var currentCheckpoint = this.state.currentCheckpoint;
+	      _location2.default.verifyUserPosition(trail.checkpoints[currentCheckpoint]).then(function (pass) {
+	        if (pass) {
+	          console.log('!', pass);
+	          this.setState({
+	            currentCheckpoint: this.state.currentCheckpoint + 1
+	          });
+	        } else {
+	          return;
+	        }
+	      }.bind(this)).catch(function (error) {});
 	    }
 	  },
 	  prevCheckpoint: function prevCheckpoint(e) {
@@ -25224,7 +25338,7 @@
 	        _react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.nextCheckpoint },
+	          { onClick: this.finishRun },
 	          'Finish'
 	        )
 	      );
@@ -26783,61 +26897,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Timer = __webpack_require__(228);
-
-	var _Timer2 = _interopRequireDefault(_Timer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: 'Checkpoint',
-	  render: function render() {
-	    var currentCheckpoint = this.props.checkpoint;
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement('img', { src: currentCheckpoint.imgUrl, className: 'checkpoint-image' }),
-	      _react2.default.createElement(
-	        'ul',
-	        null,
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          'Hint: ',
-	          currentCheckpoint.hint
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          'Distance from last checkpoint: ',
-	          currentCheckpoint.distance,
-	          ' metres'
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          'Description: ',
-	          currentCheckpoint.description
-	        )
-	      )
-	    );
-	  }
-	});
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -26867,7 +26926,7 @@
 	});
 
 /***/ },
-/* 229 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26876,7 +26935,7 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _promise = __webpack_require__(230);
+	var _promise = __webpack_require__(229);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
@@ -26891,12 +26950,23 @@
 		return promise;
 	}
 
-	function endRun() {}
+	function postRunDetails(runDetails) {
+		_superagent2.default.post('./v1/runs').send(runDetails).end();
+	}
 
 	module.exports = {
 		getTimestamp: getTimestamp,
-		endRun: endRun
+		postRunDetails: postRunDetails
 	};
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(230)
+
 
 /***/ },
 /* 230 */
@@ -26904,7 +26974,12 @@
 
 	'use strict';
 
-	module.exports = __webpack_require__(231)
+	module.exports = __webpack_require__(231);
+	__webpack_require__(233);
+	__webpack_require__(234);
+	__webpack_require__(235);
+	__webpack_require__(236);
+	__webpack_require__(238);
 
 
 /***/ },
@@ -26913,21 +26988,7 @@
 
 	'use strict';
 
-	module.exports = __webpack_require__(232);
-	__webpack_require__(234);
-	__webpack_require__(235);
-	__webpack_require__(236);
-	__webpack_require__(237);
-	__webpack_require__(239);
-
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var asap = __webpack_require__(233);
+	var asap = __webpack_require__(232);
 
 	function noop() {}
 
@@ -27141,7 +27202,7 @@
 
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -27368,12 +27429,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 234 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(232);
+	var Promise = __webpack_require__(231);
 
 	module.exports = Promise;
 	Promise.prototype.done = function (onFulfilled, onRejected) {
@@ -27387,12 +27448,12 @@
 
 
 /***/ },
-/* 235 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(232);
+	var Promise = __webpack_require__(231);
 
 	module.exports = Promise;
 	Promise.prototype['finally'] = function (f) {
@@ -27409,14 +27470,14 @@
 
 
 /***/ },
-/* 236 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	//This file contains the ES6 extensions to the core Promises/A+ API
 
-	var Promise = __webpack_require__(232);
+	var Promise = __webpack_require__(231);
 
 	module.exports = Promise;
 
@@ -27522,7 +27583,7 @@
 
 
 /***/ },
-/* 237 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27530,8 +27591,8 @@
 	// This file contains then/promise specific extensions that are only useful
 	// for node.js interop
 
-	var Promise = __webpack_require__(232);
-	var asap = __webpack_require__(238);
+	var Promise = __webpack_require__(231);
+	var asap = __webpack_require__(237);
 
 	module.exports = Promise;
 
@@ -27658,13 +27719,13 @@
 
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	// rawAsap provides everything we need except exception management.
-	var rawAsap = __webpack_require__(233);
+	var rawAsap = __webpack_require__(232);
 	// RawTasks are recycled to reduce GC churn.
 	var freeTasks = [];
 	// We queue errors to ensure they are thrown in right order (FIFO).
@@ -27730,12 +27791,12 @@
 
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(232);
+	var Promise = __webpack_require__(231);
 
 	module.exports = Promise;
 	Promise.enableSynchronous = function () {
@@ -27796,6 +27857,96 @@
 	  Promise.prototype.getState = undefined;
 	};
 
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Promise = __webpack_require__(229);
+
+	function getUserLocation() {
+	  var promise = new Promise(function (resolve, reject) {
+	    if (navigator.geolocation) {
+	      var userCoords = navigator.geolocation.getCurrentPosition(function (position) {
+	        resolve(position.coords);
+	      });
+	    } else {
+	      reject('Geolocation not supported by this browser');
+	    }
+	  });
+	  return promise;
+	}
+
+	function verifyUserPosition(checkpointCoords) {
+	  var promise = new Promise(function (resolve, reject) {
+	    var range = 0.00008;
+	    getUserLocation().then(function (userCoords) {
+	      resolve(userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range);
+	    }).catch(function (error) {});
+	  });
+	  return promise;
+	}
+
+	module.exports = {
+	  verifyUserPosition: verifyUserPosition
+	};
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Timer = __webpack_require__(227);
+
+	var _Timer2 = _interopRequireDefault(_Timer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'Checkpoint',
+	  render: function render() {
+	    var currentCheckpoint = this.props.checkpoint;
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement('img', { src: currentCheckpoint.imgUrl, className: 'checkpoint-image' }),
+	      _react2.default.createElement(
+	        'ul',
+	        null,
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Hint: ',
+	          currentCheckpoint.hint
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Distance from last checkpoint: ',
+	          currentCheckpoint.distance,
+	          ' metres'
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Description: ',
+	          currentCheckpoint.description
+	        )
+	      )
+	    );
+	  }
+	});
 
 /***/ }
 /******/ ]);

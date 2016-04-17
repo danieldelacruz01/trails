@@ -11,11 +11,14 @@ function getTimestamp(){
 	return promise
 }
 
-function endRun(){
-
+function postRunDetails(runDetails){
+	request
+		.post('./v1/runs')
+		.send(runDetails)
+		.end()
 }
 
 module.exports = {
 	getTimestamp: getTimestamp,
-	endRun: endRun
+	postRunDetails: postRunDetails
 }

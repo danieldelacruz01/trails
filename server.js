@@ -1,13 +1,19 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var path = require('path')
-var compression = require('compression')
-var fs = require('fs')
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+var compression = require('compression');
+var fs = require('fs');
 
+var Knex = require('knex')
+var knexConfig = require('./knexfile')
+
+var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
+
 
 app.use(compression())
 app.use(bodyParser.json());
+
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -23,12 +29,16 @@ app.get('/v1/trail', function (req, res) {
   //console.log('hello trailblazer here is your data')
 });
 
-app.get('/v1/runs', function (req,res) {
-  fs.readFile('runs.json', 'utf8', (err, data) => {
-    if(err) throw err;
-    res.json(JSON.parse(data));
-    //console.log('hello dandonlou here is runs data',data)
-  });
+app.get('/v1/runs', function (req,res,next) {
+  console.log("hello")
+  knex.select("*").from("runs")
+    .then(function(resp){
+      //console.log(res)
+      res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    });
 });
 
 app.get('/v1/timestamp', function (req,res) {
@@ -36,11 +46,15 @@ app.get('/v1/timestamp', function (req,res) {
 });
 
 app.post('/v1/runs', function (req, res) {
-  console.log(req.body)
-  fs.writeFile('runs.json', JSON.stringify(req.body), 'utf8', (err) => {
-    if(err) throw err;
-    console.log("New data sent to file")
-  });
+  console.log("write to db")
+  knex.insert(req.body).into('runs')
+    .then(function(resp){
+      console.log(resp)
+      res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    });
 });
 
 app.get('/v1/leaderboard', function (req,res){

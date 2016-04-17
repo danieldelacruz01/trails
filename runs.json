@@ -1,1 +1,21 @@
-{"runs":[{"id":1,"startTime":240,"endTime":30,"userId":1,"trailId":1},{"id":2,"startTime":240,"endTime":60,"userId":2,"trailId":1},{"id":3,"startTime":240,"endTime":-60,"userId":3,"trailId":1},{"id":4,"startTime":1460863377492},{"id":5,"startTime":1460866711489},{"id":6,"startTime":1460866803254}]}
+{ "runs": [
+          {
+           "runId": 1,
+           "startTime": 1460857277992,
+           "endTime": 1460857524363,
+           "name": "Daniel"
+          },
+          {
+           "runId": 2,
+           "startTime": 1460857324960,
+           "endTime": 1460857547881,
+           "name": "Dominic"
+          },
+          {
+           "id": 3,
+           "startTime": 1460857343284,
+           "endTime": 1460857506429,
+           "name": "Louise"
+          }
+  ]
+}
