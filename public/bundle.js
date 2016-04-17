@@ -25121,19 +25121,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavLink = __webpack_require__(217);
-
-	var _NavLink2 = _interopRequireDefault(_NavLink);
-
 	var _reactRouter = __webpack_require__(160);
 
 	var _superagent = __webpack_require__(221);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _Timer = __webpack_require__(227);
+	var _promise = __webpack_require__(229);
 
-	var _Timer2 = _interopRequireDefault(_Timer);
+	var _promise2 = _interopRequireDefault(_promise);
 
 	var _run = __webpack_require__(228);
 
@@ -25143,13 +25139,17 @@
 
 	var _location2 = _interopRequireDefault(_location);
 
+	var _NavLink = __webpack_require__(217);
+
+	var _NavLink2 = _interopRequireDefault(_NavLink);
+
 	var _Checkpoint = __webpack_require__(240);
 
 	var _Checkpoint2 = _interopRequireDefault(_Checkpoint);
 
-	var _promise = __webpack_require__(229);
+	var _Timer = __webpack_require__(227);
 
-	var _promise2 = _interopRequireDefault(_promise);
+	var _Timer2 = _interopRequireDefault(_Timer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25157,87 +25157,106 @@
 	var trail = {};
 	if (testing) {
 	  trail = {
-	    checkpoints: [{
-	      name: "EDA Campus",
-	      imgUrl: "https://lh3.googleusercontent.com/Wm9kLUI11vIwyMEkUb40jtH13n74CoV7XaTgOJLZAELLbqxndQnEY30_579P5L0wAu8=w2048-h1365-rw-no",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "you are sitting right there!",
-	      timeLimit: 240,
-	      distance: 1000,
-	      description: "good place to learn to code"
+	    "checkpoints": [{
+	      "id": 1,
+	      "locationName": "Bucket Fountain",
+	      "description": "bucket and water feature",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://www.stuff.co.nz/content/dam/images/1/a/5/m/t/v/image.related.StuffLandscapeSixteenByNine.620x349.1a2huc.png/1457654617914.jpg",
+	      "timeLimit": null,
+	      "distanceInMeters": null,
+	      "hint": ["Farmers are near ", "Where's Havana?"]
 	    }, {
-	      name: "Bucket Fountain",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "splash splash",
-	      timeLimit: null,
-	      distance: null,
-	      description: "people like to put dye and/or dishwashing liquid in the water"
+	      "id": 2,
+	      "locationName": "Civic Square",
+	      "description": "public space with galleries",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://www.sculptures.org.nz/__data/assets/image/0003/1767/te-aho-a-maui.jpg",
+	      "timeLimit": 240,
+	      "distanceInMeters": 400,
+	      "hint": ["Place of books ", "How civil of you"]
 	    }, {
-	      name: "Civic Square",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "giant floating ball thing",
-	      timeLimit: 240,
-	      distance: 400,
-	      description: "good place to eat on your lunch break"
+	      "id": 3,
+	      "locationName": "Bronze Statue",
+	      "description": "On the harbour",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://www.weekendnotes.com/im/008/06/solace-in-the-wind-statue-art-wellington-waterfron.jpg",
+	      "timeLimit": 480,
+	      "distanceInMeters": 650,
+	      "hint": ["Not Te Mama ", "On the waters edge"]
 	    }, {
-	      name: "Five",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "Five splash",
-	      timeLimit: null,
-	      distance: null,
-	      description: "people like to put dye and/or dishwashing liquid in the water"
+	      "id": 4,
+	      "locationName": "Near the embassy",
+	      "description": "Scaled up movie camera on tripod",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "https://macmantravels.files.wordpress.com/2012/03/well_tripod.jpg",
+	      "timeLimit": 540,
+	      "distanceInMeters": 650,
+	      "hint": ["Not an embassy ", "Cambridge, not England"]
 	    }, {
-	      name: "Six",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "Six floating ball thing",
-	      timeLimit: 240,
-	      distance: 400,
-	      description: "good place to eat on your lunch break"
+	      "id": 5,
+	      "locationName": "The Basin Reserve",
+	      "description": "Great for a round of cricket",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://static2.stuff.co.nz/1363406548/350/8435350.jpg",
+	      "timeLimit": 360,
+	      "distanceInMeters": 750,
+	      "hint": ["No flyover's here! ", "A round-about there"]
 	    }, {
-	      name: "Seven",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "Seven splash",
-	      timeLimit: null,
-	      distance: null,
-	      description: "people like to put dye and/or dishwashing liquid in the water"
+	      "id": 6,
+	      "locationName": "War Memorial",
+	      "description": "National war memorial park",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://cdn.eventfinda.co.nz/uploads/locations/transformed/119918-5236-34.jpg",
+	      "timeLimit": 360,
+	      "distanceInMeters": 500,
+	      "hint": ["Massive monolith ", "Students mill about"]
 	    }, {
-	      name: "Eight",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "Eight floating ball thing",
-	      timeLimit: 240,
-	      distance: 400,
-	      description: "good place to eat on your lunch break"
+	      "id": 7,
+	      "locationName": "Footscray ave/Karo Dr",
+	      "description": "Historic Buildings",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://www.regangentry.com/files/gimgs/5_2-2009-subject-to-change.jpg",
+	      "timeLimit": 660,
+	      "distanceInMeters": 900,
+	      "hint": ["Main rd out ", "Colourful exterior"]
 	    }, {
-	      name: "Nine",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "Nine splash",
-	      timeLimit: null,
-	      distance: null,
-	      description: "people like to put dye and/or dishwashing liquid in the water"
+	      "id": 8,
+	      "locationName": "Matterhorn",
+	      "description": "a refreshment establishment",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://cdn1.buuteeq.com/upload/24280/matterhorn_wellington_nz_credit_jesssilk_highres_cmyk-6.JPG.1920x810_default.jpeg",
+	      "timeLimit": 480,
+	      "distanceInMeters": 700,
+	      "hint": ["Dine on a peak ", "Horns matter"]
 	    }, {
-	      name: "Ten",
-	      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
-	      latitude: -41.296912,
-	      longitude: 174.773789,
-	      hint: "Ten floating ball thing",
-	      timeLimit: 240,
-	      distance: 400,
-	      description: "good place to eat on your lunch break"
+	      "id": 9,
+	      "locationName": "Large marble ball",
+	      "description": "Museum of New Zealand",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://2.bp.blogspot.com/_IjSQ_ADksow/TH2tk6ZfmQI/AAAAAAAAKXU/bBBQyyGjCM4/s1600/WDP+ballslinedup.jpg",
+	      "timeLimit": 480,
+	      "distanceInMeters": 650,
+	      "hint": ["Floats in an entrance ", "It is not a marble"]
+	    }, {
+	      "id": 10,
+	      "locationName": "Former Post and Telegraph Building",
+	      "description": "Historic building",
+	      "latitude": -41.296912,
+	      "longitude": 174.773789,
+	      "imgUrl": "http://2.bp.blogspot.com/-CuYZRaiKnOA/Tq_NXXuTgDI/AAAAAAAABSM/7MDpO07DYa0/s1600/post_and_telegraph3.jpg",
+	      "timeLimit": 360,
+	      "distanceInMeters": 500,
+	      "hint": ["Can't by stamps here anymore ", "curvature"]
 	    }]
 	  };
 	} else {
@@ -25274,7 +25293,6 @@
 	      var currentCheckpoint = this.state.currentCheckpoint;
 	      _location2.default.verifyUserPosition(trail.checkpoints[currentCheckpoint]).then(function (pass) {
 	        if (pass) {
-	          console.log('!', pass);
 	          this.setState({
 	            currentCheckpoint: this.state.currentCheckpoint + 1
 	          });
@@ -27881,12 +27899,16 @@
 
 	function verifyUserPosition(checkpointCoords) {
 	  var promise = new Promise(function (resolve, reject) {
-	    var range = 0.00008;
 	    getUserLocation().then(function (userCoords) {
-	      resolve(userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range);
+	      resolve(verifyUserCoordsInRange(userCoords, checkpointCoords));
 	    }).catch(function (error) {});
 	  });
 	  return promise;
+	}
+
+	function verifyUserCoordsInRange(userCoords, checkpointCoords) {
+	  var range = 0.00008;
+	  return userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range;
 	}
 
 	module.exports = {

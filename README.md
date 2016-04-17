@@ -34,7 +34,7 @@ Team Roles / Accountabilities
 
 *Louise*
 
-* Whiteboard maestro
+* Data Ninja
 * Crime fighter
 
 Typical Day Plan

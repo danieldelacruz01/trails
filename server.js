@@ -26,14 +26,11 @@ app.get('/v1/trail', function (req, res) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
-  //console.log('hello trailblazer here is your data')
 });
 
 app.get('/v1/runs', function (req,res,next) {
-  console.log("hello")
   knex.select("*").from("runs")
     .then(function(resp){
-      //console.log(res)
       res.send(resp)
     })
     .catch(function(error){
@@ -46,10 +43,8 @@ app.get('/v1/timestamp', function (req,res) {
 });
 
 app.post('/v1/runs', function (req, res) {
-  console.log("write to db")
   knex.insert(req.body).into('runs')
     .then(function(resp){
-      console.log(resp)
       res.send(resp)
     })
     .catch(function(error){
@@ -61,7 +56,6 @@ app.get('/v1/leaderboard', function (req,res){
   fs.readFile('leaderboard.json', 'utf8', (err,data) => {
     if(err) throw err;
     res.json(JSON.parse(data));
-    //console.log("Leaderboard data", data)
   });
 });
 
@@ -75,7 +69,6 @@ app.post('/v1/leaderboard', function (req, res) {
   fs.writeFile('leaderboard.json', 'data', 'utf8', (err) => {
     if(err) throw err;
     res.json(JSON.stringify(data));
-    console.log("leaderboard updated")
   });
 });
 

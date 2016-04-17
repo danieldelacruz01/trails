@@ -11,7 +11,6 @@ export default React.createClass({
           <li><NavLink to="/trail">trailblazers</NavLink></li>
         </ul>
                 {this.props.children}
-
       </div>
       )
   }
