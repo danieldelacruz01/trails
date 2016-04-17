@@ -19,9 +19,11 @@
     "express": "^4.13.4",
     "fs": "0.0.2",
     "if-env": "^1.0.0",
+    "knex": "^0.10.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-router": "^2.0.0"
+    "react-router": "^2.0.0",
+    "sqlite3": "^4.13.1"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",
