@@ -5,7 +5,106 @@ import location from '../models/location.js'
 import Checkpoint from './Checkpoint'
 import Promise from 'promise'
 
-var trail = {
+var testing = true
+var trail = {}
+if (testing) {
+  trail = {
+    checkpoints: [
+    {
+      name:"EDA Campus",
+      imgUrl: "https://lh3.googleusercontent.com/Wm9kLUI11vIwyMEkUb40jtH13n74CoV7XaTgOJLZAELLbqxndQnEY30_579P5L0wAu8=w2048-h1365-rw-no",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "you are sitting right there!",
+      timeLimit: 240,
+      distance: 1000,
+      description: "good place to learn to code"
+    },
+    {
+      name:"Bucket Fountain",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "splash splash",
+      timeLimit: null,
+      distance: null,
+      description: "people like to put dye and/or dishwashing liquid in the water"
+    },
+    {
+      name:"Civic Square",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "giant floating ball thing",
+      timeLimit: 240,
+      distance: 400,
+      description: "good place to eat on your lunch break"
+    },
+       {
+      name:"Five",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "Five splash",
+      timeLimit: null,
+      distance: null,
+      description: "people like to put dye and/or dishwashing liquid in the water"
+    },
+    {
+      name:"Six",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "Six floating ball thing",
+      timeLimit: 240,
+      distance: 400,
+      description: "good place to eat on your lunch break"
+    },
+       {
+      name:"Seven",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "Seven splash",
+      timeLimit: null,
+      distance: null,
+      description: "people like to put dye and/or dishwashing liquid in the water"
+    },
+    {
+      name:"Eight",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "Eight floating ball thing",
+      timeLimit: 240,
+      distance: 400,
+      description: "good place to eat on your lunch break"
+    },
+       {
+      name:"Nine",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/128007719.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "Nine splash",
+      timeLimit: null,
+      distance: null,
+      description: "people like to put dye and/or dishwashing liquid in the water"
+    },
+    {
+      name:"Ten",
+      imgUrl: "https://static.panoramio.com.storage.googleapis.com/photos/medium/44666064.jpg",
+      latitude: -41.296912,
+      longitude: 174.773789,
+      hint: "Ten floating ball thing",
+      timeLimit: 240,
+      distance: 400,
+      description: "good place to eat on your lunch break"
+    }
+  ]
+  }
+}
+else {
+  trail = {
   checkpoints: [
     {
       name:"EDA Campus",
@@ -39,7 +138,7 @@ var trail = {
     }
   ]
 }
-
+}
 
 export default React.createClass({
 
@@ -52,8 +151,16 @@ export default React.createClass({
     var currentCheckpoint = this.state.currentCheckpoint
     location.verifyUserPosition(trail.checkpoints[currentCheckpoint])
       .then(function(pass){
-        console.log('!', pass)
-      })
+        if(pass){
+          console.log('!', pass)
+          this.setState({
+            currentCheckpoint: this.state.currentCheckpoint + 1
+          });
+        }
+        else {
+          return
+        }
+      }.bind(this))
       .catch(function(error){})
   },
 
