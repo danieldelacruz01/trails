@@ -185,6 +185,7 @@ export default React.createClass({
 	    });
     }
   },
+
 	render(){
 		if (this.state.currentCheckpoint === 0){
 		  return (
