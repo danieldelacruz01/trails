@@ -53,11 +53,14 @@ app.post('/v1/runs', function (req, res) {
 });
 
 app.get('/v1/leaderboard', function (req,res){
-  fs.readFile('leaderboard.json', 'utf8', (err,data) => {
-    if(err) throw err;
-    res.json(JSON.parse(data));
+  knex.select("*").from("runs").orderBy('trailTime', 'asc').limit(10)
+    .then(function(resp){
+      res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
   });
-});
 
 app.post('/v1/leaderboard', function (req, res) {
   var data = {
