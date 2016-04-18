@@ -7,9 +7,8 @@
 }
 
 .spinner {
-  display: none;
-  width: 40px;
-  height: 40px;
+  width: 250px;
+  height: 250px;
   margin: 100px auto;
   background-color: #333;
 

@@ -3,12 +3,9 @@ var knexConfig = require('../knexfile')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
-
-
 function all(){
  return knex.select().from('runs')//outputs select * from 'runs'
 }
-
 
 function getTimes(){
   return knex('startTime', 'endTime', 'name').from('runs')

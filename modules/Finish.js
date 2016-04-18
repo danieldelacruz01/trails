@@ -1,7 +1,7 @@
 import React from 'react'
 
 import run from '../models/run'
-
+import Leaderboard from './Leaderboard'
 export default React.createClass({
   getInitialState(){
     console.log(this.props)
@@ -17,6 +17,7 @@ export default React.createClass({
     console.log(this.state)
   },
   handleSubmit(e){
+    e.preventDefault()
   },
   render(){
     return (
@@ -29,6 +30,7 @@ export default React.createClass({
           />
           <input type="submit"/>
         </form>
+        <Leaderboard />
       </div>
     )
   }
