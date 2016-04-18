@@ -4,24 +4,19 @@ import run from '../models/run'
 
 export default React.createClass({
   getInitialState(){
-    let endTime
-    run.getTimestamp()
-      .then(function(timestamp){
-        endTime = timestamp
-        return {
-          startTime: this.props.runDetails.startTime,
-          endTime: timestamp,
-          name: ""
-        }
-      })
-        
+    console.log(this.props)
+    return {
+      startTime: this.props.runDetails.startTime,
+      endTime: this.props.runDetails.endTime,
+      name: ""
+    }
   },
   handleNameChange(e){
     e.preventDefault()
-    this.setState({name: e.target.value})
+    this.state.name = e.target.value
+    console.log(this.state)
   },
   handleSubmit(e){
-
   },
   render(){
     return (
@@ -30,7 +25,6 @@ export default React.createClass({
           <input
             type="text"
             placeholder="Your Name"
-            value={this.state.name}
             onChange={this.handleNameChange}
           />
           <input type="submit"/>
