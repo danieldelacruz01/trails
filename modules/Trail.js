@@ -9,7 +9,7 @@ import location from '../models/location.js'
 import NavLink from './NavLink'
 import Checkpoint from './Checkpoint'
 import Timer from './Timer'
-
+import Leaderboard from './Leaderboard'
 var testing = true
 var trail = {}
 if (testing) {
@@ -171,7 +171,7 @@ export default React.createClass({
             });
           }
           else {
-            return
+             return
           }
         }.bind(this))
         .catch(function(error){})
@@ -185,36 +185,23 @@ export default React.createClass({
 	    });
     }
   },
-
-	render(){
-		if (this.state.currentCheckpoint === 0){
-		  return (
-				<div>
-					<h2>MVP trail</h2>
-          <h2>Checkpoint {this.state.currentCheckpoint+1} of {trail.checkpoints.length}</h2>
-          <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
-	        <button onClick={this.nextCheckpoint}>Start</button>
-				</div>
-			)
-		}
-    if (this.state.currentCheckpoint+1 === trail.checkpoints.length){
-      return (
-        <div>
-          <h2>MVP trail</h2>
-          <h2>Checkpoint {this.state.currentCheckpoint+1} of {trail.checkpoints.length}</h2>
-          <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
-          <button onClick={this.finishRun}>Finish</button>
-        </div>
-      )
+  createButtonDiv(){
+    var buttonDiv = <div><Timer/><button onClick={this.nextCheckpoint}>Next</button></div>
+    if (this.state.currentCheckpoint === 0){
+      buttonDiv = <div><button onClick={this.nextCheckpoint}>Start</button></div>
     }
+    if (this.state.currentCheckpoint+1 === trail.checkpoints.length) {
+      buttonDiv = <div><button onClick={this.finishRun}>Finish</button></div>
+    }
+    return buttonDiv
+  },
+	render(){
 		return (
 			<div>
-				<h2>MVP trail</h2>
+				<h2>MVP Trail</h2>
         <h2>Checkpoint {this.state.currentCheckpoint+1} of {trail.checkpoints.length}</h2>
         <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
-        <Timer/>
-        <button onClick={this.prevCheckpoint}>Previous</button>
-        <button onClick={this.nextCheckpoint}>Next</button>
+        {this.createButtonDiv()}
 			</div>
 		)
 	}
