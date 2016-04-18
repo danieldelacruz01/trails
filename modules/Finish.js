@@ -14,20 +14,22 @@ export default React.createClass({
   handleNameChange(e){
     e.preventDefault()
     this.state.name = e.target.value
-    console.log(this.state)
   },
   handleSubmit(e){
     e.preventDefault()
+    run.postRunDetails(this.state)
   },
   render(){
     return (
       <div>
+        <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Your Name"
             onChange={this.handleNameChange}
           />
+          <button type="button">Cancel</button>
           <input type="submit"/>
         </form>
         <Leaderboard />
