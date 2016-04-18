@@ -1,22 +1,17 @@
 import React from 'react'
 import request from 'superagent'
-import Promise from 'Promise'
+import Promise from 'promise'
 
 export default React.createClass({
-  getRankings(){
-      request.get('./v1/runs').end(function(err, res){
-          if (err) reject(err)
-          else resolve(<li>1 + ": " + res.body[0].name</li>)
-      }
-    })
+  displayRankings(){
+    return <li>Winner</li>
   },
-
   render() {
     return (
       <div>
         <h2>Leaderboard</h2>
           <ul>
-            {this.getRankings()}
+            {this.displayRankings}
           </ul>
       </div>
     )

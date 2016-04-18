@@ -18,7 +18,20 @@ function postRunDetails(runDetails){
 		.end()
 }
 
+function getRankings(){
+	return new Promise(function(resolve, reject){
+		request
+			.get('./v1/leaderboard')
+			.end(function(err, res){
+				if (err) reject(err)
+				else resolve(res.body)
+			})
+
+	})
+}
+
 module.exports = {
 	getTimestamp: getTimestamp,
-	postRunDetails: postRunDetails
+	postRunDetails: postRunDetails,
+	getRankings: getRankings
 }
