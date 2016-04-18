@@ -9,7 +9,7 @@ import location from '../models/location.js'
 import NavLink from './NavLink'
 import Checkpoint from './Checkpoint'
 import Timer from './Timer'
-import Leaderboard from './Leaderboard'
+
 var testing = true
 var trail = {}
 if (testing) {
