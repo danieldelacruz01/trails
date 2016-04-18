@@ -1,7 +1,14 @@
+body {
+  text-align: center;
+}
+
 .active {
   color: green;
 }
-
+button {
+  width: 100%;
+  box-sizing: border-box; }
+}
 .checkpoint-image{
 	max-height: 250px;
 }

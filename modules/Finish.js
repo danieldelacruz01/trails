@@ -2,11 +2,10 @@ import React from 'react'
 import run from '../models/run'
 import Leaderboard from './Leaderboard'
 
-var winners = ['Louise']
-
+var quickest = [{name: 'dom'}, {name: 'domf'},{name: 'dom2'}]
 run.getRankings()
-  .then(function(leaderboard){
-    winners = leaderboard
+  .then(function(rankings){
+    quickest = rankings
   })
 
 export default React.createClass({
@@ -26,12 +25,7 @@ export default React.createClass({
     run.postRunDetails(this.state)
   },
   render(){
-    if(winners){
-      return (
-        <Leaderboard rankings={winners}/>
-      )
-    }
-    return (
+     return (
       <div>
         <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
@@ -39,6 +33,7 @@ export default React.createClass({
           <button type="button">Cancel</button>
           <input type="submit"/>
         </form>
+        <Leaderboard leaders={quickest}/>
       </div>
     )
   }
