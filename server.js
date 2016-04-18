@@ -76,9 +76,8 @@ app.use(function(req, res){
   res.redirect('/') 
 })
 
+
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT)
 })
-
-
