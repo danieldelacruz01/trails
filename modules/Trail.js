@@ -6,6 +6,7 @@ import Promise from 'promise'
 import run from '../models/run'
 import location from '../models/location.js'
 
+import Leaderboard from './Leaderboard'
 import NavLink from './NavLink'
 import Checkpoint from './Checkpoint'
 import Timer from './Timer'

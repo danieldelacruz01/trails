@@ -25139,6 +25139,10 @@
 
 	var _location2 = _interopRequireDefault(_location);
 
+	var _Leaderboard = __webpack_require__(241);
+
+	var _Leaderboard2 = _interopRequireDefault(_Leaderboard);
+
 	var _NavLink = __webpack_require__(217);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
@@ -25310,25 +25314,21 @@
 	      });
 	    }
 	  },
-	  render: function render() {
+	  createButtonDiv: function createButtonDiv() {
+	    var buttonDiv = _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(_Timer2.default, null),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: this.nextCheckpoint },
+	        'Next'
+	      )
+	    );
 	    if (this.state.currentCheckpoint === 0) {
-	      return _react2.default.createElement(
+	      buttonDiv = _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'MVP trail'
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Checkpoint ',
-	          this.state.currentCheckpoint + 1,
-	          ' of ',
-	          trail.checkpoints.length
-	        ),
-	        _react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
 	        _react2.default.createElement(
 	          'button',
 	          { onClick: this.nextCheckpoint },
@@ -25337,23 +25337,9 @@
 	      );
 	    }
 	    if (this.state.currentCheckpoint + 1 === trail.checkpoints.length) {
-	      return _react2.default.createElement(
+	      buttonDiv = _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'MVP trail'
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Checkpoint ',
-	          this.state.currentCheckpoint + 1,
-	          ' of ',
-	          trail.checkpoints.length
-	        ),
-	        _react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
 	        _react2.default.createElement(
 	          'button',
 	          { onClick: this.finishRun },
@@ -25361,13 +25347,16 @@
 	        )
 	      );
 	    }
+	    return buttonDiv;
+	  },
+	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
 	      null,
 	      _react2.default.createElement(
 	        'h2',
 	        null,
-	        'MVP trail'
+	        'MVP Trail'
 	      ),
 	      _react2.default.createElement(
 	        'h2',
@@ -25378,17 +25367,7 @@
 	        trail.checkpoints.length
 	      ),
 	      _react2.default.createElement(_Checkpoint2.default, { checkpoint: trail.checkpoints[this.state.currentCheckpoint] }),
-	      _react2.default.createElement(_Timer2.default, null),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.prevCheckpoint },
-	        'Previous'
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.nextCheckpoint },
-	        'Next'
-	      )
+	      this.createButtonDiv()
 	    );
 	  }
 	});
@@ -27966,6 +27945,51 @@
 	      null,
 	      'Time elapsed: ',
 	      this.state.secondsRemaining
+	    );
+	  }
+	});
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'Leaderboard',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Leaderboard'
+	      ),
+	      _react2.default.createElement(
+	        'ul',
+	        null,
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Leader 1'
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'leader 2'
+	        )
+	      )
 	    );
 	  }
 	});
