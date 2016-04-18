@@ -25127,15 +25127,15 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _promise = __webpack_require__(229);
+	var _promise = __webpack_require__(227);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
-	var _run = __webpack_require__(228);
+	var _run = __webpack_require__(237);
 
 	var _run2 = _interopRequireDefault(_run);
 
-	var _location = __webpack_require__(239);
+	var _location = __webpack_require__(238);
 
 	var _location2 = _interopRequireDefault(_location);
 
@@ -25143,11 +25143,11 @@
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
-	var _Checkpoint = __webpack_require__(240);
+	var _Checkpoint = __webpack_require__(239);
 
 	var _Checkpoint2 = _interopRequireDefault(_Checkpoint);
 
-	var _Timer = __webpack_require__(227);
+	var _Timer = __webpack_require__(240);
 
 	var _Timer2 = _interopRequireDefault(_Timer);
 
@@ -26907,41 +26907,8 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	module.exports = __webpack_require__(228)
 
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: 'Timer',
-	  getInitialState: function getInitialState() {
-	    return {
-	      secondsRemaining: 0
-	    };
-	  },
-	  tick: function tick() {
-	    this.setState({ secondsRemaining: this.state.secondsRemaining + 1 });
-	  },
-	  componentDidMount: function componentDidMount() {
-	    this.interval = setInterval(this.tick, 1000);
-	  },
-	  componentWillUnmount: function componentWillUnmount() {
-	    clearInterval(this.interval);
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      'Time elapsed: ',
-	      this.state.secondsRemaining
-	    );
-	  }
-	});
 
 /***/ },
 /* 228 */
@@ -26949,33 +26916,13 @@
 
 	'use strict';
 
-	var _superagent = __webpack_require__(221);
+	module.exports = __webpack_require__(229);
+	__webpack_require__(231);
+	__webpack_require__(232);
+	__webpack_require__(233);
+	__webpack_require__(234);
+	__webpack_require__(236);
 
-	var _superagent2 = _interopRequireDefault(_superagent);
-
-	var _promise = __webpack_require__(229);
-
-	var _promise2 = _interopRequireDefault(_promise);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function getTimestamp() {
-		var promise = new _promise2.default(function (resolve, reject) {
-			_superagent2.default.get('./v1/timestamp').end(function (err, res) {
-				if (err) reject(err);else resolve(res.text);
-			});
-		});
-		return promise;
-	}
-
-	function postRunDetails(runDetails) {
-		_superagent2.default.post('./v1/runs').send(runDetails).end();
-	}
-
-	module.exports = {
-		getTimestamp: getTimestamp,
-		postRunDetails: postRunDetails
-	};
 
 /***/ },
 /* 229 */
@@ -26983,30 +26930,7 @@
 
 	'use strict';
 
-	module.exports = __webpack_require__(230)
-
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = __webpack_require__(231);
-	__webpack_require__(233);
-	__webpack_require__(234);
-	__webpack_require__(235);
-	__webpack_require__(236);
-	__webpack_require__(238);
-
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var asap = __webpack_require__(232);
+	var asap = __webpack_require__(230);
 
 	function noop() {}
 
@@ -27220,7 +27144,7 @@
 
 
 /***/ },
-/* 232 */
+/* 230 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -27447,12 +27371,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 233 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(231);
+	var Promise = __webpack_require__(229);
 
 	module.exports = Promise;
 	Promise.prototype.done = function (onFulfilled, onRejected) {
@@ -27466,12 +27390,12 @@
 
 
 /***/ },
-/* 234 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(231);
+	var Promise = __webpack_require__(229);
 
 	module.exports = Promise;
 	Promise.prototype['finally'] = function (f) {
@@ -27488,14 +27412,14 @@
 
 
 /***/ },
-/* 235 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	//This file contains the ES6 extensions to the core Promises/A+ API
 
-	var Promise = __webpack_require__(231);
+	var Promise = __webpack_require__(229);
 
 	module.exports = Promise;
 
@@ -27601,7 +27525,7 @@
 
 
 /***/ },
-/* 236 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27609,8 +27533,8 @@
 	// This file contains then/promise specific extensions that are only useful
 	// for node.js interop
 
-	var Promise = __webpack_require__(231);
-	var asap = __webpack_require__(237);
+	var Promise = __webpack_require__(229);
+	var asap = __webpack_require__(235);
 
 	module.exports = Promise;
 
@@ -27737,13 +27661,13 @@
 
 
 /***/ },
-/* 237 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	// rawAsap provides everything we need except exception management.
-	var rawAsap = __webpack_require__(232);
+	var rawAsap = __webpack_require__(230);
 	// RawTasks are recycled to reduce GC churn.
 	var freeTasks = [];
 	// We queue errors to ensure they are thrown in right order (FIFO).
@@ -27809,12 +27733,12 @@
 
 
 /***/ },
-/* 238 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(231);
+	var Promise = __webpack_require__(229);
 
 	module.exports = Promise;
 	Promise.enableSynchronous = function () {
@@ -27877,12 +27801,46 @@
 
 
 /***/ },
-/* 239 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Promise = __webpack_require__(229);
+	var _superagent = __webpack_require__(221);
+
+	var _superagent2 = _interopRequireDefault(_superagent);
+
+	var _promise = __webpack_require__(227);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getTimestamp() {
+		var promise = new _promise2.default(function (resolve, reject) {
+			_superagent2.default.get('./v1/timestamp').end(function (err, res) {
+				if (err) reject(err);else resolve(res.text);
+			});
+		});
+		return promise;
+	}
+
+	function postRunDetails(runDetails) {
+		_superagent2.default.post('./v1/runs').send(runDetails).end();
+	}
+
+	module.exports = {
+		getTimestamp: getTimestamp,
+		postRunDetails: postRunDetails
+	};
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Promise = __webpack_require__(227);
 
 	function getUserLocation() {
 	  var promise = new Promise(function (resolve, reject) {
@@ -27916,7 +27874,7 @@
 	};
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27929,7 +27887,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Timer = __webpack_require__(227);
+	var _Timer = __webpack_require__(240);
 
 	var _Timer2 = _interopRequireDefault(_Timer);
 
@@ -27966,6 +27924,48 @@
 	          currentCheckpoint.description
 	        )
 	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'Timer',
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsRemaining: 0
+	    };
+	  },
+	  tick: function tick() {
+	    this.setState({ secondsRemaining: this.state.secondsRemaining + 1 });
+	  },
+	  componentDidMount: function componentDidMount() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    clearInterval(this.interval);
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      'Time elapsed: ',
+	      this.state.secondsRemaining
 	    );
 	  }
 	});
