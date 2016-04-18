@@ -1,3 +1,5 @@
+// is this needed when you have the knexfile.js 
+// single source of config
 var config = {
   database: {
     dialect: 'sqlite3',

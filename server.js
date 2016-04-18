@@ -22,6 +22,9 @@ app.get('/', function (req, res) {
 })
 
 app.get('/v1/trail', function (req, res) {
+  // using a .json file and a sqlite database?
+  // should be plural trails/
+  // see this REST guide section 2.2 http://guides.rubyonrails.org/routing.html 
   fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
     if (err) throw err;
     res.json(JSON.parse(data));
@@ -38,6 +41,9 @@ app.get('/v1/runs', function (req,res,next) {
     });
 });
 
+// the browser has the Date object
+// you don't need to make a request (network requests are expensive)
+// you can normalise to UTC if needed with https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC
 app.get('/v1/timestamp', function (req,res) {
   res.json(Date.now())
 });
@@ -52,6 +58,7 @@ app.post('/v1/runs', function (req, res) {
     });
 });
 
+// v1/scores/ ?
 app.get('/v1/leaderboard', function (req,res){
   fs.readFile('leaderboard.json', 'utf8', (err,data) => {
     if(err) throw err;
@@ -73,6 +80,15 @@ app.post('/v1/leaderboard', function (req, res) {
 });
 
 var PORT = process.env.PORT || 8080
+
+// to make your server testable 
+// module.exports = app
+// then in ANOTHER file:
+// var app = require('./server')
+// app.listen(port, function () {
+//
+// })
+//
 app.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT)
 })

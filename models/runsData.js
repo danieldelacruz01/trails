@@ -4,7 +4,7 @@ var knexConfig = require('../knexfile')
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 
-
+// space out the method chain https://github.com/airbnb/javascript#whitespace--chains
 function all(){
  return knex.select().from('runs')//outputs select * from 'runs'
 }
@@ -15,6 +15,7 @@ function getTimes(){
 }
 
 function insertTimes(){ //the key values need to come from js variables
+  // optional https://github.com/airbnb/javascript#whitespace--in-braces
   return knex('runs').insert({runId: 'runId'},{startTime:'startTime'},{endTime:'endTime'},{name:'getTimes'})
 }
 

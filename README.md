@@ -1,3 +1,17 @@
+Review Notes:
+
+Which style guide are you using?
+
+http://eslint.org/docs/rules/keyword-spacing.html
+
+https://github.com/airbnb/javascript#blocks--cuddled-elses
+
+http://eslint.org/docs/developer-guide/code-conventions#operator-spacing
+
+http://eslint.org/docs/rules/no-spaced-func
+
+`models/*` aren't really models. Create a `src/` and place the index.js and these inside it
+
 [![Stories in Ready](https://badge.waffle.io/danieldelacruz01/trails.png?label=ready&title=Ready)](https://waffle.io/danieldelacruz01/trails)
 # trails
 

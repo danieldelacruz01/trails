@@ -1,3 +1,4 @@
+// if you want a promises interface you could use https://www.npmjs.com/package/superagent-as-promised
 import request from 'superagent'
 import Promise from 'promise'
 
@@ -11,7 +12,10 @@ function getTimestamp(){
 	return promise
 }
 
-function postRunDetails(runDetails){
+// normally thee'd be an error handler of some kind
+// postRunDetails (runDetails, callback)
+// or just use raw superagent request and propagate the error where its used
+function postRunDetails(runDetails){ 
 	request
 		.post('./v1/runs')
 		.send(runDetails)

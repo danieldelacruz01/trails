@@ -10,12 +10,16 @@ import NavLink from './NavLink'
 import Checkpoint from './Checkpoint'
 import Timer from './Timer'
 
+// place test data in a separate test file 
+// then import it plug it in to the component state
+// you can use the same test data for you component tests
 var testing = true
 var trail = {}
 if (testing) {
    trail = {
     "checkpoints": [
       {
+      // indentation
       "id": 1,
       "locationName": "Bucket Fountain",
       "description": "bucket and water feature",
@@ -128,13 +132,16 @@ if (testing) {
     ]
   }
 }
+// https://github.com/airbnb/javascript#blocks--cuddled-elses
 else {
   request
     .get('./v1/trail')
-    .end(function(err,res){
+    .end(function(err,res){ //http://eslint.org/docs/rules/keyword-spacing.html
       trail = res.body
     })
 }
+
+// store run details in component state
 var runDetails = {
   startTime: 0,
   endTime: 0,
@@ -145,6 +152,7 @@ export default React.createClass({
   getInitialState(){
     return {currentCheckpoint: 0}
   },
+  // prefer to space methods but that's just me
   finishRun(e){
     run.getTimestamp()
       .then(function(timestamp){
@@ -186,6 +194,9 @@ export default React.createClass({
     }
   },
 	render(){
+    // a lot of repetition here
+    // how can the conditional be embedded in th view logic
+    // (rather than outside it)
 		if (this.state.currentCheckpoint === 0){
 		  return (
 				<div>

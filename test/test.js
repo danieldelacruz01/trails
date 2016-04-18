@@ -1,9 +1,14 @@
 var test = require('tape')
 var location = require('../models/location.js')
 
+// isn't this in models/location.js ?
+// rename to isWithinRange?
 function compareUserToCheckpoint(checkpointCoords, userCoords){
   var range = 0.00005
   //User coords would be from g etUserLocation() in production
+  // use proxyquire and sinon to stub out navigator getLocation in the tests
+  // https://github.com/thlorenz/proxyquire
+  // https://kroltech.com/2014/02/28/node-js-testing-with-mocha-chai-sinon-proxyquire/
   if (checkpointCoords.latitude<0) { checkpointCoords.latitude = Math.sqrt(checkpointCoords.latitude*checkpointCoords.latitude) }
   if (userCoords.latitude<0)       { userCoords.latitude = Math.sqrt(userCoords.latitude*userCoords.latitude) }
 
@@ -12,6 +17,7 @@ function compareUserToCheckpoint(checkpointCoords, userCoords){
     userCoords.longitude >= checkpointCoords.longitude-range)
 }
 
+// https://github.com/airbnb/javascript#whitespace--in-braces
 var mockUserCoordsObj1 = {latitude: -41.296840800000004, longitude: 174.77381740000002}
 var mockUserCoordsObj2 = {latitude: -41.296700800000004, longitude: 174.77382740000002}
 var mockUserCoordsObj3 = {latitude: -41.29, longitude: 174.77}

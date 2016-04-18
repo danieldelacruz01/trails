@@ -10,7 +10,7 @@ export default React.createClass({
         <ul>
           <li><NavLink to="/trail">trailblazers</NavLink></li>
         </ul>
-                {this.props.children}
+        {this.props.children}
       </div>
       )
   }

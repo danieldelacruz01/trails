@@ -2,8 +2,11 @@
   "name": "trails",
   "version": "1.0.0",
   "description": "",
+  // main should be the server.js, otherwise it point to you client
   "main": "index.js",
   "scripts": {
+    // start:dev does not build the client?
+    // maybe have an explicit build script
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "nodemon server.js",
     "start:prod": "webpack && node server.js"

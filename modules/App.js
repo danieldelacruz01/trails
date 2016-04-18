@@ -2,7 +2,7 @@ import React from 'react'
 import {IndexLink, Link} from 'react-router'
 import NavLink from "./NavLink"
 import Home from "./Home"
-
+// whitespace
 
 
 export default React.createClass({
