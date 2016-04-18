@@ -1,7 +1,14 @@
 import React from 'react'
-
 import run from '../models/run'
 import Leaderboard from './Leaderboard'
+
+var winners = ['Louise']
+
+run.getRankings()
+  .then(function(leaderboard){
+    winners = leaderboard
+  })
+
 export default React.createClass({
   getInitialState(){
     return {
@@ -19,6 +26,11 @@ export default React.createClass({
     run.postRunDetails(this.state)
   },
   render(){
+    if(winners){
+      return (
+        <Leaderboard rankings={winners}/>
+      )
+    }
     return (
       <div>
         <h2>Finished!</h2>
@@ -27,7 +39,6 @@ export default React.createClass({
           <button type="button">Cancel</button>
           <input type="submit"/>
         </form>
-        <Leaderboard />
       </div>
     )
   }

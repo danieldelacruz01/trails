@@ -57,13 +57,12 @@ var runDetails = {
 
 export default React.createClass({
   getInitialState(){
-    return {currentCheckpoint: 0, completed: false, checkingLocation: false}
+    return {currentCheckpoint: 0, completed: false, checkingLocation: false, message:false}
   },
   finishRun(e){
     run.getTimestamp()
       .then(function(timestamp){
         runDetails.endTime = timestamp
-        run.postRunDetails(runDetails)
         this.setState({completed:true})
       }.bind(this))
   },
@@ -77,7 +76,7 @@ export default React.createClass({
       }
     if (this.state.currentCheckpoint < trail.checkpoints.length-1){
       var currentCheckpoint = this.state.currentCheckpoint
-      this.setState({checkingLocation: true})
+      this.setState({checkingLocation: true, message:false})
       location.verifyUserPosition(trail.checkpoints[currentCheckpoint])
         .then(function(pass){
           if(pass){
@@ -87,7 +86,7 @@ export default React.createClass({
             });
           }
           else {
-            this.setState({checkingLocation:false})
+            this.setState({checkingLocation:false, message: "Sorry, try again!"})
             return
           }
         }.bind(this))
@@ -118,6 +117,7 @@ export default React.createClass({
         <h2>Checkpoint {this.state.currentCheckpoint+1} of {trail.checkpoints.length}</h2>
         <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation}/>
         {this.createButtonDiv()}
+        {this.state.message}
       </div>
 		)
 	}

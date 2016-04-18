@@ -26,7 +26,6 @@ function getRankings(){
 				if (err) reject(err)
 				else resolve(res.body)
 			})
-
 	})
 }
 
