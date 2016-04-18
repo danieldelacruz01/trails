@@ -9,6 +9,7 @@ import location from '../models/location.js'
 import NavLink from './NavLink'
 import Checkpoint from './Checkpoint'
 import Timer from './Timer'
+import Finish from './Finish'
 
 var testing = true
 var trail = {}
@@ -143,15 +144,18 @@ var runDetails = {
 
 export default React.createClass({
   getInitialState(){
-    return {currentCheckpoint: 0}
+    return {currentCheckpoint: 0, completed: false}
   },
   finishRun(e){
+    {/*
     run.getTimestamp()
       .then(function(timestamp){
         runDetails.endTime = timestamp
         runDetails.name = "Piet"
         run.postRunDetails(runDetails)
       })
+    */}
+    this.setState({completed:true})
   },
 	nextCheckpoint(e) {
     e.preventDefault()
@@ -204,6 +208,11 @@ export default React.createClass({
           <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]}/>
           <button onClick={this.finishRun}>Finish</button>
         </div>
+      )
+    }
+    if (this.state.completed){
+      return (
+        <Finish runDetails={runDetails}/>
       )
     }
 		return (
