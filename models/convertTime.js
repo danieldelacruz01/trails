@@ -9,7 +9,7 @@ function convertMoment(start, end){
   console.log("TRAIL TIME", diff)//output is 2:30:00
   return diff
 }
-//convertMoment(1460944800000,1460953800000)
+// convertMoment(1460944800000,1460953800000)
 
 
 

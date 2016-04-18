@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.integer('startTime')
     table.integer('endTime')
     table.string('name')
+    table.string('trailTime')
   })
 };
 
