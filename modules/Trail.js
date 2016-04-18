@@ -11,6 +11,7 @@ import Checkpoint from './Checkpoint'
 import Timer from './Timer'
 import Finish from './Finish'
 
+
 var testing = true
 var trail = {}
 if (testing) {
