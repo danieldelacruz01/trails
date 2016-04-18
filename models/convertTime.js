@@ -1,24 +1,19 @@
-//time is either start or end timestamp passsed in
-function convertToMinutes(time){
-  var date = new Date();
-  var hour = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  if (hour<10 ) {
-    hour = "0" + hour;
-  }
-  if(minutes<10){
-    minutes = "0" + minutes;
-  }
-  if(seconds<10){
-    seconds = "0" + seconds;
-  }
-  console.log("Your time is " + hour + ":" + minutes + ":" + seconds);
+var moment = require('moment');
+moment().format('h:mm:ss');
+
+function convertMoment(start, end){
+  start = moment.unix(start)
+  end = moment.unix(end)
+  var diff = Math.floor((end - start) / 1000)
+  diff = moment(diff).format('h:mm:ss')
+  console.log("TRAIL TIME", diff)//output is 2:30:00
+  return diff
 }
+//convertMoment(1460944800000,1460953800000)
 
 
 
 
 module.exports = {
- convertToMinutes:convertToMinutes
+ convertMoment:convertMoment
 }
