@@ -1,3 +1,5 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+var dotnev = require('dotnev').load()
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -8,11 +10,30 @@ var Knex = require('knex')
 var knexConfig = require('./knexfile')
 
 var passport = require('passport')
+var Strategy = require('passport-facebook').Strategy
 var session = require('express-session')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
 
+passport.use(new Strategy({
+  clientID: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  callbackURL: 'http://localhost:8080/login/facebook/return'
+},
+function(accessToken, refreshToken, profile, cb) {
+  return cb(null, profile)
+}));
+passport.serializeUser(function(user, cb){
+  cb(null, user);
+});
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+})
+
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({extended: true}));
+app.use(session)({secret: 'keyboard cat', resave: true, saveUninitialized: true});
 
 app.use(compression())
 app.use(bodyParser.json());
@@ -20,19 +41,25 @@ app.use(bodyParser.json());
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(session({
-  secret: API GET secret
-  resave: true,
-  saveUninitialized: true
-}));
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
+
+app.get('/login', function (req, res) {
+  res.render('login')
+})
+
+app.get('/login/facebook',
+  passport.authenticate('facebook'));
+
+app.get('login/facebook/return',
+  passport.authenticate('facebook',{failureRedirect: '/login'}),
+  function(req, res){
+    res.redirect('/')
+  });
 
 app.get('/v1/trail', function (req, res) {
   fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
