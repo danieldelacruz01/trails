@@ -11,6 +11,7 @@ export default React.createClass({
         <ul role="nav">
           <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
           <li><NavLink to="/about" >About</NavLink></li>
+          <li><NavLink to="/Login" >Login</NavLink></li>
           <li><NavLink to="/trail" >Trail</NavLink></li>
         </ul>
         {this.props.children}

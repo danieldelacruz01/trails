@@ -7,6 +7,9 @@ var fs = require('fs');
 var Knex = require('knex')
 var knexConfig = require('./knexfile')
 
+var passport = require('passport')
+var session = require('express-session')
+
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
 
@@ -16,6 +19,16 @@ app.use(bodyParser.json());
 
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(session({
+  secret: API GET secret
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
@@ -76,7 +89,7 @@ app.post('/v1/leaderboard', function (req, res) {
 });
 
 app.use(function(req, res){
-  res.redirect('/') 
+  res.redirect('/')
 })
 
 

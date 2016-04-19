@@ -37,3 +37,6 @@ node_modules
 
 # bundle
 **/bundle.js
+
+#API keys
+_config.js
