@@ -1,12 +1,25 @@
 var moment = require('moment');
-moment().format('h:mm:ss');
 
 function convertMoment(start, end){
-  start = moment.unix(start)
-  end = moment.unix(end)
-  var diff = Math.floor((end - start) / 1000)
-  diff = moment(diff).format('h:mm:ss')
-  console.log("TRAIL TIME", diff)
-  return diff
+  var startMoment
+  var endMoment
+
+  if (start > end){
+    startMoment = moment(end);
+    endMoment = moment(start);
+  } else {
+    startMoment = moment(start);
+    endMoment = moment(end);
+  }
+  var secondsDifference = endMoment.diff(startMoment, 'seconds')
+
+  return moment()
+    .startOf('day')
+    .seconds(secondsDifference)
+    .format('H:mm:ss')
 }
-convertMoment(1460948400000,1460948700000)
+
+
+
+
+module.exports = convertMoment
