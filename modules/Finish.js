@@ -39,6 +39,7 @@ export default React.createClass({
             type="text"
             placeholder="Your Name"
             onChange={this.handleNameChange}
+            required
           />
           <button type="button">Cancel</button>
           <input type="submit"/>
