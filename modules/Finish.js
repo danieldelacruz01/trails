@@ -1,4 +1,5 @@
 import React from 'react'
+import {InputGroup, Form, FormControl, Button} from 'react-bootstrap'
 import run from '../models/run'
 
 import convertMoment from '../models/convertTime'
@@ -59,11 +60,14 @@ export default React.createClass({
     return (
       <div>
         <h2>Finished!</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
-          <input type="submit"/>
-        </form>
-        <button type="button" onClick={this.skipSubmit}>Skip</button>
+        <InputGroup>
+          <FormControl type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
+          <InputGroup.Button>
+            <Button onClick={this.handleSubmit}>Submit</Button>
+          </InputGroup.Button>
+        </InputGroup>
+        <br/>
+        <Button onClick={this.skipSubmit}>Skip</Button>
       </div>
     )
   }

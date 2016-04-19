@@ -4,10 +4,15 @@ body {
 }
 
 button {
-  width: 100%;
   box-sizing: border-box;
 }
 
+.navbar {
+  display: inline-block;
+}
+.nav-button {
+  width: 33%;
+}
 .active {
   color: green;
 }
