@@ -1,22 +1,23 @@
-body {
+  body {
   text-align: center;
 }
 
-.active {
-  color: green;
-}
 button {
   width: 100%;
   box-sizing: border-box; }
 }
+.active {
+  color: green;
+}
 .checkpoint-image{
 	max-height: 250px;
+  max-width: 100%;
 }
 
 .spinner {
   width: 250px;
   height: 250px;
-  margin: 100px auto;
+  margin: auto;
   background-color: #333;
 
   border-radius: 100%;
@@ -42,3 +43,4 @@ button {
     opacity: 0;
   }
 }
+
