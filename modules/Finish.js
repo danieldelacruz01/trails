@@ -8,7 +8,7 @@ var quickest = []
 run.getRankings()
   .then(function(rankings){
     quickest = rankings
-  }
+  })
 
 export default React.createClass({
   getInitialState(){
