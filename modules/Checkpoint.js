@@ -1,4 +1,5 @@
 import React from 'react'
+import {Well} from 'react-bootstrap'
 import Timer from './Timer'
 
 export default React.createClass({
@@ -16,11 +17,10 @@ export default React.createClass({
     return (
       <div>
         {this.loadClass()}
-        <ul>
-          <li>Hint: {currentCheckpoint.hint}</li>
-          <li>Distance from last checkpoint: {currentCheckpoint.distance} metres</li>
-          <div>{this.props.status}</div>
-        </ul>
+        <div>Hint <span class="caret"></span></div>
+        <Well bsSize="small">{currentCheckpoint.hint}</Well>
+        
+        <div>Distance from last checkpoint: {currentCheckpoint.distance} metres</div>
       </div>
     )
   }
