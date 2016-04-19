@@ -2,7 +2,7 @@ import React from 'react'
 import run from '../models/run'
 
 import convertMoment from '../models/convertTime'
-import Leaderboard from './Leaderboard'
+import Leaderboard from './LeaderBoard'
 
 var quickest = [{name: 'dom'}, {name: 'domf'},{name: 'dom2'}]
 run.getRankings()
