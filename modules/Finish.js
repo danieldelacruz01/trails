@@ -1,6 +1,8 @@
 import React from 'react'
 import run from '../models/run'
-import Leaderboard from './Leaderboard'
+
+import convertMoment from '../models/convertTime'
+import Leaderboard from './LeaderBoard'
 
 var quickest = [{name: 'dom'}, {name: 'domf'},{name: 'dom2'}]
 run.getRankings()
@@ -11,9 +13,7 @@ run.getRankings()
 export default React.createClass({
   getInitialState(){
     return {
-      startTime: this.props.runDetails.startTime,
-      endTime: this.props.runDetails.endTime,
-      name: ""
+      name: null,
     }
   },
   handleNameChange(e){
@@ -22,14 +22,28 @@ export default React.createClass({
   },
   handleSubmit(e){
     e.preventDefault()
-    run.postRunDetails(this.state)
+
+    let start = parseInt(this.props.runDetails.startTime)
+    let end = parseInt(this.props.runDetails.endTime)
+    let trailTime = convertMoment(start, end)
+    
+    let runDetails = {
+      startTime: start,
+      endTime: end,
+      trailId: this.props.runDetails.trailId,
+      name: this.state.name,
+      trailTime: trailTime
+    } 
+    if(runDetails.name && runDetails.trailTime){
+      run.postRunDetails(runDetails)
+    }
   },
   render(){
      return (
       <div>
         <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Your Name" onChange={this.handleNameChange}/>
+          <input type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
           <button type="button">Cancel</button>
           <input type="submit"/>
         </form>
