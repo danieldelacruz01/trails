@@ -1,19 +1,20 @@
 import React from 'react'
 import run from '../models/run'
-import Leaderboard from './Leaderboard'
 
-var quickest = [{name: 'dom'}, {name: 'domf'},{name: 'dom2'}]
+import convertMoment from '../models/convertTime'
+import Leaderboard from './LeaderBoard'
+
+var quickest = []
 run.getRankings()
   .then(function(rankings){
     quickest = rankings
-  })
+  }
 
 export default React.createClass({
   getInitialState(){
     return {
-      startTime: this.props.runDetails.startTime,
-      endTime: this.props.runDetails.endTime,
-      name: ""
+      displayLeaderboard: false,
+      name: null,
     }
   },
   handleNameChange(e){
@@ -22,18 +23,47 @@ export default React.createClass({
   },
   handleSubmit(e){
     e.preventDefault()
-    run.postRunDetails(this.state)
+
+    let start = parseInt(this.props.runDetails.startTime)
+    let end = parseInt(this.props.runDetails.endTime)
+    let trailTime = convertMoment(start, end)
+
+    let runDetails = {
+      startTime: start,
+      endTime: end,
+      trailId: this.props.runDetails.trailId,
+      name: this.state.name,
+      trailTime: trailTime
+    }
+    if(runDetails.name && runDetails.trailTime){
+      run.postRunDetails(runDetails)
+      run.getRankings()
+      .then(function(rankings){
+        quickest = rankings
+        this.setState({displayLeaderboard: true})
+      }.bind(this))
+    }
+  },
+  skipSubmit(e){
+    e.preventDefault()
+    this.setState({displayLeaderboard: true})
   },
   render(){
-     return (
+    if(this.state.displayLeaderboard){
+      return (
+        <div>
+          <Leaderboard leaders={quickest}/>
+        </div>
+      )
+    }
+    return (
       <div>
         <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Your Name" onChange={this.handleNameChange}/>
-          <input className='button' type="submit"/>
+          <input type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
+          <input type="submit"/>
         </form>
-          <button type="button">Skip</button>
-        <Leaderboard leaders={quickest}/>
+        <button type="button" onClick={this.skipSubmit}>Skip</button>
       </div>
     )
   }
