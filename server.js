@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var compression = require('compression');
+
 var fs = require('fs');
 
 var Knex = require('knex')
@@ -9,7 +10,6 @@ var knexConfig = require('./knexfile')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
-
 
 app.use(compression())
 app.use(bodyParser.json());
@@ -81,3 +81,4 @@ app.listen(PORT, function() {
 })
 
 
+module.exports = app;
