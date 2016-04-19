@@ -1,5 +1,5 @@
 import React from 'react'
-import {Well} from 'react-bootstrap'
+import {ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap'
 import Timer from './Timer'
 
 export default React.createClass({
@@ -17,10 +17,10 @@ export default React.createClass({
     return (
       <div>
         {this.loadClass()}
-        <div>Hint <span class="caret"></span></div>
-        <Well bsSize="small">{currentCheckpoint.hint}</Well>
-        
         <div>Distance from last checkpoint: {currentCheckpoint.distance} metres</div>
+        <DropdownButton bsStyle="default" title="Show Hint">
+          <MenuItem>{currentCheckpoint.hint}</MenuItem>
+        </DropdownButton>       
       </div>
     )
   }

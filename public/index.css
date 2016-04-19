@@ -7,6 +7,10 @@ button {
   box-sizing: border-box;
 }
 
+#logo {
+  max-height: 100px;
+}
+
 .navbar {
   display: inline-block;
 }
@@ -114,4 +118,3 @@ button {
     opacity: 0;
   }
 }
-

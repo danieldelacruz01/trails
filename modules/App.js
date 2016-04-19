@@ -8,7 +8,7 @@ export default React.createClass({
   render() {
     return (
       <div>
-        <h1>T R A I L S</h1>
+        <IndexLink to="/"><img id="logo" src="./logo.png"/></IndexLink>
         <div className="row">
           <div className="col-xs-12">
             <ButtonGroup justified bsSize="large">
