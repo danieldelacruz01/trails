@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.integer('endTime')
     table.string('name')
     table.string('trailTime')
+    table.integer('trailId')
   })
 };
 
@@ -16,3 +17,4 @@ exports.down = function(knex, Promise) {
     console.log('runs table was dropped')
   })
 };
+
