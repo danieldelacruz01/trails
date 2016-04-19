@@ -140,6 +140,7 @@ else {
 var runDetails = {
   startTime: 0,
   endTime: 0,
+  trailId: 1,
   name: ""
 }
 
@@ -150,9 +151,7 @@ export default React.createClass({
   finishRun(e){
     run.getTimestamp()
       .then(function(timestamp){
-        runDetails.endTime = timestamp
-        run.postRunDetails(runDetails)
-        
+        runDetails.endTime = timestamp      
         this.setState({completed:true})
       }.bind(this))
   },

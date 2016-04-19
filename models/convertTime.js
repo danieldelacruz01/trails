@@ -1,6 +1,9 @@
 var moment = require('moment');
 
 function convertMoment(start, end){
+  var startMoment
+  var endMoment
+  
   if (start > end){
     startMoment = moment(end);
     endMoment = moment(start);

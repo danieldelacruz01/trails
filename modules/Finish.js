@@ -1,14 +1,12 @@
 import React from 'react'
 
 import run from '../models/run'
+import convertMoment from '../models/convertTime'
 
 export default React.createClass({
   getInitialState(){
-    console.log(this.props)
     return {
-      startTime: this.props.runDetails.startTime,
-      endTime: this.props.runDetails.endTime,
-      name: ""
+      name: null,
     }
   },
   handleNameChange(e){
@@ -17,8 +15,20 @@ export default React.createClass({
   },
   handleSubmit(e){
     e.preventDefault()
-    console.log(this.state)
-    run.postRunDetails(this.state)
+    let start = parseInt(this.props.runDetails.startTime)
+    let end = parseInt(this.props.runDetails.endTime)
+    let trailTime = convertMoment(start, end)
+    
+    let runDetails = {
+      startTime: start,
+      endTime: end,
+      trailId: this.props.runDetails.trailId,
+      name: this.state.name,
+      trailTime: trailTime
+    } 
+    if(runDetails.name && runDetails.trailTime){
+      run.postRunDetails(runDetails)
+    }
   },
   render(){
     return (
