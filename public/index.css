@@ -1,11 +1,13 @@
-  body {
+body {
+  padding: 5%;
   text-align: center;
 }
 
 button {
   width: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
 }
+
 .active {
   color: green;
 }

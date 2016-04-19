@@ -30,9 +30,9 @@ export default React.createClass({
         <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Your Name" onChange={this.handleNameChange}/>
-          <button type="button">Cancel</button>
-          <input type="submit"/>
+          <input className='button' type="submit"/>
         </form>
+          <button type="button">Skip</button>
         <Leaderboard leaders={quickest}/>
       </div>
     )
