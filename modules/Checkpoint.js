@@ -2,15 +2,24 @@ import React from 'react'
 import Timer from './Timer'
 
 export default React.createClass({
+  loadClass(){
+  var currentCheckpoint = this.props.checkpoint
+    if (this.props.checkingLocation){
+      return <img src={currentCheckpoint.imgUrl} className="checkpoint-image spinner"/>
+    }
+    else {
+      return <img src={currentCheckpoint.imgUrl} className="checkpoint-image "/>
+    }
+  },
   render(){
     var currentCheckpoint = this.props.checkpoint
     return (
       <div>
-        <img src={currentCheckpoint.imgUrl} className="checkpoint-image"/>
+        {this.loadClass()}
         <ul>
           <li>Hint: {currentCheckpoint.hint}</li>
           <li>Distance from last checkpoint: {currentCheckpoint.distance} metres</li>
-          <li>Description: {currentCheckpoint.description}</li>
+          <div>{this.props.status}</div>
         </ul>
       </div>
     )
