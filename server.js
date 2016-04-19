@@ -28,6 +28,16 @@ app.get('/v1/trail', function (req, res) {
   });
 });
 
+app.get('/v1/checkpoints/:trailId', function (req,res,next) {
+  knex.select('*').from('checkpoints').where({trailId: req.params.trailId})
+    .then(function(resp){
+      res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    });
+});
+
 app.get('/v1/runs', function (req,res,next) {
   knex.select("*").from("runs")
     .then(function(resp){
