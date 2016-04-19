@@ -1,7 +1,14 @@
 import React from 'react'
-
 import run from '../models/run'
+
 import convertMoment from '../models/convertTime'
+import Leaderboard from './Leaderboard'
+
+var quickest = [{name: 'dom'}, {name: 'domf'},{name: 'dom2'}]
+run.getRankings()
+  .then(function(rankings){
+    quickest = rankings
+  })
 
 export default React.createClass({
   getInitialState(){
@@ -15,6 +22,7 @@ export default React.createClass({
   },
   handleSubmit(e){
     e.preventDefault()
+
     let start = parseInt(this.props.runDetails.startTime)
     let end = parseInt(this.props.runDetails.endTime)
     let trailTime = convertMoment(start, end)
@@ -31,19 +39,15 @@ export default React.createClass({
     }
   },
   render(){
-    return (
+     return (
       <div>
         <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            placeholder="Your Name"
-            onChange={this.handleNameChange}
-            required
-          />
+          <input type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
           <button type="button">Cancel</button>
           <input type="submit"/>
         </form>
+        <Leaderboard leaders={quickest}/>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 var Promise = require('promise')
 
 function getUserLocation() {
-  var promise = new Promise (function (resolve, reject) {
+  return new Promise (function (resolve, reject) {
     if (navigator.geolocation) {
       var userCoords = navigator.geolocation.getCurrentPosition(function(position){
         resolve(position.coords)
@@ -9,18 +9,16 @@ function getUserLocation() {
     }
     else { reject('Geolocation not supported by this browser')}
   })
-  return promise
 }
 
 function verifyUserPosition(checkpointCoords){
-  var promise = new Promise(function(resolve,reject){
+  return new Promise(function(resolve,reject){
     getUserLocation()
       .then(function(userCoords){
         resolve(verifyUserCoordsInRange(userCoords, checkpointCoords))
       })
       .catch(function(error){})
   })
-  return promise
 }
 
 function verifyUserCoordsInRange(userCoords, checkpointCoords){

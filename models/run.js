@@ -2,13 +2,12 @@ import request from 'superagent'
 import Promise from 'promise'
 
 function getTimestamp(){
-	let promise = new Promise(function(resolve,reject){
+	return new Promise(function(resolve,reject){
 		request.get('./v1/timestamp').end(function(err,res){
 			if (err) reject(err)
 			else resolve(res.text)
 		})
 	})
-	return promise
 }
 
 function postRunDetails(runDetails){
@@ -18,7 +17,19 @@ function postRunDetails(runDetails){
 		.end()
 }
 
+function getRankings(){
+	return new Promise(function(resolve, reject){
+		request
+			.get('./v1/leaderboard')
+			.end(function(err, res){
+				if (err) reject(err)
+				else resolve(res.body)
+			})
+	})
+}
+
 module.exports = {
 	getTimestamp: getTimestamp,
-	postRunDetails: postRunDetails
+	postRunDetails: postRunDetails,
+	getRankings: getRankings
 }
