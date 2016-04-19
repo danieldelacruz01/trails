@@ -1,6 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import {Alert, Button} from 'react-bootstrap'
+import {Alert, Button, ProgressBar} from 'react-bootstrap'
 import request from 'superagent'
 import Promise from 'promise'
 
@@ -183,7 +183,7 @@ export default React.createClass({
     }
   },
   createButtonDiv(){
-    var buttonDiv = <div><Timer/><Button bsSize="large" onClick={this.nextCheckpoint}>Next</Button></div>
+    var buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Next</Button></div>
     if (this.state.currentCheckpoint === 0){
       buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Start</Button></div>
     }
@@ -207,8 +207,8 @@ export default React.createClass({
     }
  		return (
 			<div>
-				<h2>MVP Trail</h2>
-        <h2>Checkpoint {this.state.currentCheckpoint+1} of {trail.checkpoints.length}</h2>
+        <Timer/>
+        <ProgressBar now={(this.state.currentCheckpoint+1)*10} label={this.state.currentCheckpoint+1 + ' of ' + trail.checkpoints.length} />
         <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation}/>
         {this.createButtonDiv()}
         {this.notAtLocation()}
