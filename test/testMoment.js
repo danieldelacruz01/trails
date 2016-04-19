@@ -1,50 +1,24 @@
 var test = require('tape')
 var moment = require('moment');
-moment().format('h:mm:ss');
 
-function convertMoment(start, end){
-  start = moment.unix(start);
-  end = moment.unix(end);
-  return start + ":" + end;
-}
-function subtractMoment(start, end){
-  start = moment.unix(start);
-  end = moment.unix(end);
-  var diff = end - start;
-  return diff;
-}
-//tested in node returned '166662647 years'
-function humanizeTime(start){
-  moment.duration(1460934768400, "hours").humanize();
-  return;
-}
+var convertMoment = require('../models/convertTime.js')
 
-function convertMoment(start, end){
-  start = moment.unix(start);
-  end = moment.unix(end);
-  var diff = Math.floor((end - start) / 1000)
-  diff = moment(diff).format('h:mm:ss');
-  console.log("TRAIL TIME", diff);
-  return diff;
-}
+var start = 1461016620000
+var end = 1461019920000
+var expected = "0:55:00"
 
-var first = 1460934768400;
-var second = 1460934934026;
+var start2 = 1460943000000
+var end2 = 1460946900000
+var expected2 = "1:05:00"
 
-var first2 = 1460944377796;
-var second2 = 1460944772369;
+var start2 = 1460936593000
+var end2 = 1460943026000
+var expected2 = "1:47:13"
 
-var first3 = 1460944800000; //2:00:00
-var second3 = 1460953800000; //04:30:00
-
-test('start, end times and trial times returned and formatted correctly', function (t) {
-  t.true(convertMoment(first,second), 'returns start and end times 11:12:48:11:15:34')
-  t.true(convertMoment(first,first), 'are equal times 11:12:48:11:12:48')
-  t.true(convertMoment(second2,second2), 'are equal times 1:59:32:1:59:32')
-  t.true(subtractMoment(first,second), 'the differnce in time is 00:02:86')
-  t.true(subtractMoment(first2, second2), 'the difference in time is 00:06:75')
-  t.true(convertMoment(second3, first3), 'You completed the trail in 01:30:00')
-  t.true(convertMoment(first3, second3), "You completed the trail in 2:30:00")
+test('difference between start and end times returned and formatted correctly', function (t) {
+  t.equal(convertMoment(start, end), expected, "returns difference of 0:55:00")
+  t.equal(convertMoment(start2, end2), expected2, "returns difference of 1:47:13")
+  t.equal(convertMoment(end2, start2), expected2, "Start and end times are interchangeable (doesn't matter which order they are passed in as)")
   t.end()
 })
 
