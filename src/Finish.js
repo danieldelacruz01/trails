@@ -7,23 +7,22 @@ import Leaderboard from './LeaderBoard'
 
 var quickest = []
 run.getRankings()
-  .then(function(rankings){
+  .then(function (rankings) {
     quickest = rankings
   })
-
 export default React.createClass({
-  getInitialState(){
+  getInitialState () {
     return {
       displayLeaderboard: false,
       leaderboardImageUrl: null,
       name: undefined
     }
   },
-  handleNameChange(e){
+  handleNameChange (e) {
     e.preventDefault()
     this.state.name = e.target.value
   },
-  handleSubmit(e){
+  handleSubmit (e) {
     e.preventDefault()
 
     let start = parseInt(this.props.runDetails.startTime)
@@ -37,6 +36,7 @@ export default React.createClass({
       name: this.state.name,
       trailTime: trailTime
     }
+
     if(runDetails.name && runDetails.trailTime){
       run.postRunDetails(runDetails)
       run.getRankings()
@@ -52,7 +52,6 @@ export default React.createClass({
   },
   componentDidMount(){
     request.get('/v1/fbdetails').end(function(err, res){
-      console.log(res.body)
       this.setState({
         name: res.body.name,
         leaderboardImageUrl: res.body.picture.data.url
@@ -60,7 +59,6 @@ export default React.createClass({
     }.bind(this))
   },
   render(){
-    console.log(this.state)
     if(this.state.displayLeaderboard){
       return (
         <div>

@@ -1,14 +1,14 @@
 import React from 'react'
 import {IndexLink, Link} from 'react-router'
 import {ButtonGroup, Button} from 'react-bootstrap'
-import NavLink from "./NavLink"
-import Home from "./Home"
+import NavLink from './NavLink'
+import Home from './Home'
 
 export default React.createClass({
-  render() {
+  render () {
     return (
       <div>
-        <IndexLink to="/"><img id="logo" src="./logo.png"/></IndexLink>
+        <IndexLink to="/"><img id="logo" src="./images/logo.png"/></IndexLink>
         <div className="row">
           <div className="col-xs-12">
             <ButtonGroup justified bsSize="large">
@@ -18,7 +18,7 @@ export default React.createClass({
             </ButtonGroup>
           </div>
         </div>
-        {this.props.children}
+      {this.props.children}
       </div>
     )
   }
