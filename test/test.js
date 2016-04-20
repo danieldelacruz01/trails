@@ -3,6 +3,7 @@ var location = require('../models/location.js')
 
 function compareUserToCheckpoint (checkpointCoords, userCoords) {
   var range = 0.00005
+
   // User coords would be from getUserLocation() in production
   if (checkpointCoords.latitude < 0) { checkpointCoords.latitude = Math.sqrt(checkpointCoords.latitude * checkpointCoords.latitude) }
   if (userCoords.latitude < 0) { userCoords.latitude = Math.sqrt(userCoords.latitude * userCoords.latitude) }
@@ -10,6 +11,12 @@ function compareUserToCheckpoint (checkpointCoords, userCoords) {
   return (userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range) &&
    (userCoords.longitude <= checkpointCoords.longitude + range &&
     userCoords.longitude >= checkpointCoords.longitude - range)
+
+  //User coords would be from getUserLocation() in production
+  return (userCoords.latitude <= checkpointCoords.latitude+range && userCoords.latitude >= checkpointCoords.latitude-range) &&
+   (userCoords.longitude <= checkpointCoords.longitude+range &&
+    userCoords.longitude >= checkpointCoords.longitude-range)
+
 }
 
 var mockUserCoordsObj1 = {latitude: -41.296840800000004, longitude: 174.77381740000002}
