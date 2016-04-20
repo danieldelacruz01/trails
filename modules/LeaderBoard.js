@@ -1,11 +1,15 @@
 import React from 'react'
 
 export default React.createClass({
-
- render() {
+  render () {
     const leaderboard = this.props.leaders || []
-    var names = leaderboard.map(function(leader){
-      return <li>{leader.name} - {leader.trailTime}</li>
+    var names = leaderboard.map(function (leader) {
+      return (
+        <li>
+          {leader.name} -
+          {leader.trailTime}
+        </li>
+      )
     })
     return (
       <div>
