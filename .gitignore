@@ -37,3 +37,8 @@ node_modules
 
 # bundle
 **/bundle.js
+
+# nightwatch stuff
+test/nightwatch/selenium-server-standalone-2.53.0.jar
+selenium-debug.log
+test/nightwatch/output
