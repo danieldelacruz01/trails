@@ -1,9 +1,8 @@
 import React from 'react'
 import {ListGroup, ListGroupItem, Image} from 'react-bootstrap'
 
-export default React.createClass({
-
- render() {
+export default React.createClass ({
+  render () {
     const leaderboard = this.props.leaders || []
     var names = leaderboard.map(function(leader){
       return (
@@ -20,7 +19,7 @@ export default React.createClass({
         <ListGroup>
           {names}
         </ListGroup>
-      </div>
-    )
-  }
+        </div>
+      )
+    }
 })

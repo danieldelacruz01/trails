@@ -1,15 +1,15 @@
-var moment = require('moment');
+var moment = require('moment')
 
-function convertMoment(start, end){
+function convertMoment (start, end) {
   var startMoment
   var endMoment
 
-  if (start > end){
-    startMoment = moment(end);
-    endMoment = moment(start);
+  if (start > end) {
+    startMoment = moment(end)
+    endMoment = moment(start)
   } else {
-    startMoment = moment(start);
-    endMoment = moment(end);
+    startMoment = moment(start)
+    endMoment = moment(end)
   }
   var secondsDifference = endMoment.diff(startMoment, 'seconds')
 
@@ -18,8 +18,5 @@ function convertMoment(start, end){
     .seconds(secondsDifference)
     .format('H:mm:ss')
 }
-
-
-
 
 module.exports = convertMoment

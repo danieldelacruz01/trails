@@ -7,23 +7,22 @@ import Leaderboard from './LeaderBoard'
 
 var quickest = []
 run.getRankings()
-  .then(function(rankings){
+  .then(function (rankings) {
     quickest = rankings
   })
-
 export default React.createClass({
-  getInitialState(){
+  getInitialState () {
     return {
       displayLeaderboard: false,
       leaderboardImageUrl: null,
       name: undefined
     }
   },
-  handleNameChange(e){
+  handleNameChange (e) {
     e.preventDefault()
     this.state.name = e.target.value
   },
-  handleSubmit(e){
+  handleSubmit (e) {
     e.preventDefault()
 
     let start = parseInt(this.props.runDetails.startTime)

@@ -31,7 +31,7 @@ export default React.createClass({
       )
     }
   },
-  showDistance(){
+  showDistance() {
     var currentCheckpoint = this.props.checkpoint
     if (currentCheckpoint.distanceInMetres){return (<div>Distance from last checkpoint: {currentCheckpoint.distanceInMetres} metres</div>)
     } else {
@@ -43,8 +43,8 @@ export default React.createClass({
       <div>
         {this.loadClass()}
         {this.showDistance()}
-        <Button onClick={this.toggleHint}>Show hint</Button>    
-        {this.showHint()} 
+        <Button onClick={this.toggleHint}>Show hint</Button>
+        {this.showHint()}
       </div>
     )
   }

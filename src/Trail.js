@@ -38,23 +38,23 @@ export default React.createClass({
         this.setState({trailLoaded: true})
       }.bind(this))
   },
-  finishRun(e){
+  finishRun (e) {
     run.getTimestamp()
-      .then(function(timestamp){
+      .then(function (timestamp) {
         runDetails.endTime = timestamp
         runDetails.trailId = this.props.trailId
         this.setState({completed:true})
       }.bind(this))
   },
-	nextCheckpoint(e) {
+  nextCheckpoint (e) {
     e.preventDefault()
-    if (this.state.currentCheckpoint === 0){
+    if (this.state.currentCheckpoint === 0) {
       run.getTimestamp()
-        .then(function(timestamp){
+        .then(function (timestamp) {
           runDetails.startTime = timestamp
         })
-      }
-    if (this.state.currentCheckpoint < trail.checkpoints.length-1){
+    }
+    if (this.state.currentCheckpoint < trail.checkpoints.length - 1) {
       var currentCheckpoint = this.state.currentCheckpoint
       this.setState({checkingLocation: true, message:false})
       location.verifyUserPosition(trail.checkpoints[currentCheckpoint], testing)
@@ -63,17 +63,16 @@ export default React.createClass({
             this.setState({
               currentCheckpoint: this.state.currentCheckpoint + 1,
               checkingLocation: false
-            });
-          }
-          else {
-            this.setState({checkingLocation:false, message: "Sorry, try again!"})
+            })
+          } else {
+            this.setState({checkingLocation: false, message: 'Sorry, try again!'})
             return
           }
         }.bind(this))
-        .catch(function(error){})
+        .catch(function (error) {})
     }
   },
-  createButtonDiv(){
+  createButtonDiv () {
     var buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Next</Button></div>
     if (this.state.currentCheckpoint === 0){
       buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Start</Button></div>
@@ -83,7 +82,7 @@ export default React.createClass({
     }
     return buttonDiv
   },
-  notAtLocation(){
+    notAtLocation(){
     if(this.state.message){
       return <Alert bsStyle="warning">{this.state.message}</Alert>
     }
@@ -93,9 +92,9 @@ export default React.createClass({
       return <div>Loading Trail...</div>
     }
     if(this.state.completed){
-      return (
+    return (
         <div>
-          <Finish runDetails={runDetails}/>
+          <Finish runDetails={runDetails} />
         </div>
       )
     }
@@ -103,10 +102,10 @@ export default React.createClass({
 			<div>
         <Timer/>
         <ProgressBar now={(this.state.currentCheckpoint+1)*10} label={this.state.currentCheckpoint+1 + ' of ' + trail.checkpoints.length} />
-        <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation}/>
+        <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation} />
         {this.createButtonDiv()}
         {this.notAtLocation()}
       </div>
-		)
-	}
+    )
+  }
 })
