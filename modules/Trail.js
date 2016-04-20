@@ -1,7 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import {Alert, Button, ProgressBar} from 'react-bootstrap'
 import request from 'superagent'
-import Promise from 'promise'
 
 import run from '../models/run'
 import location from '../models/location.js'
@@ -11,52 +11,27 @@ import Checkpoint from './Checkpoint'
 import Timer from './Timer'
 import Finish from './Finish'
 
-var testing = true
-var trail = {}
-if (testing) {
-  trail = {
-    'checkpoints': [
-      {
-        'id': 1,
-        'locationName': 'Bucket Fountain',
-        'description': 'bucket and water feature',
-        'latitude': -41.296912,
-        'longitude': 174.773789,
-        'imgUrl': 'http://www.stuff.co.nz/content/dam/images/1/a/5/m/t/v/image.related.StuffLandscapeSixteenByNine.620x349.1a2huc.png/1457654617914.jpg',
-        'timeLimit': null,
-        'distanceInMeters': null,
-        'hint': ['Farmers are near ', "Where's Havana?"]
-      },
-      {
-        'id': 10,
-        'locationName': 'Former Post and Telegraph Building',
-        'description': 'Historic building',
-        'latitude': -41.296912,
-        'longitude': 174.773789,
-        'imgUrl': 'http://2.bp.blogspot.com/-CuYZRaiKnOA/Tq_NXXuTgDI/AAAAAAAABSM/7MDpO07DYa0/s1600/post_and_telegraph3.jpg',
-        'timeLimit': 360,
-        'distanceInMeters': 500,
-        'hint': ["Can't by stamps here anymore ", 'curvature']
-      }
-    ]
-  }
-} else {
-  request
-    .get('./v1/trail')
-    .end(function (err, res) { // expected error to be handled
-      trail = res.body
-    })
-}
-var runDetails = {
-  startTime: 0,
-  endTime: 0,
-  trailId: 1,
-  name: ''
-}
-
 export default React.createClass({
-  getInitialState () {
+
+  getInitialState () { // check if this is needed
     return {currentCheckpoint: 0, completed: false, checkingLocation: false, message: false}
+
+  getInitialState(){
+    return {
+      trailLoaded: false,
+      currentCheckpoint: 0,
+      completed: false,
+      checkingLocation: false,
+      message:false, }
+  },
+  componentDidMount(){
+    request
+      .get(`/v1/checkpoints/${this.props.trailId}`)
+      .end(function(err,res){
+        trail["checkpoints"] = res.body
+        this.setState({trailLoaded: true})
+      }.bind(this))
+
   },
   finishRun (e) {
     run.getTimestamp()
@@ -118,7 +93,27 @@ export default React.createClass({
   },
   render () {
     if (this.state.completed) {
-      return (
+    createButtonDiv(){
+    var buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Next</Button></div>
+    if (this.state.currentCheckpoint === 0){
+      buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Start</Button></div>
+    }
+    if (this.state.currentCheckpoint+1 === trail.checkpoints.length) {
+      buttonDiv = <div><Button bsSize="large" onClick={this.finishRun}>Finish</Button></div>
+    }
+    return buttonDiv
+  },
+  notAtLocation(){
+    if(this.state.message){
+      return <Alert bsStyle="warning">{this.state.message}</Alert>
+    }
+  },
+	render(){
+    if(!this.state.trailLoaded){
+      return <div>Loading Trail...</div>
+    }
+    if(this.state.completed){
+    return (
         <div>
           <Finish runDetails={runDetails} />
         </div>
@@ -129,8 +124,15 @@ export default React.createClass({
         <h2>MVP Trail</h2>
         <h2>Checkpoint {this.state.currentCheckpoint + 1} of {trail.checkpoints.length}</h2>
         <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation} />
+
+ 		return (
+			<div>
+        <Timer/>
+        <ProgressBar now={(this.state.currentCheckpoint+1)*10} label={this.state.currentCheckpoint+1 + ' of ' + trail.checkpoints.length} />
+        <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation}/>
+
         {this.createButtonDiv()}
-        {this.state.message}
+        {this.notAtLocation()}
       </div>
     )
   }

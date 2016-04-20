@@ -1,6 +1,7 @@
 import React from 'react'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
-export default React.createClass({
+export default React.createClass ({
   render () {
     const leaderboard = this.props.leaders || []
     var names = leaderboard.map(function (leader) {
@@ -10,14 +11,17 @@ export default React.createClass({
           {leader.trailTime}
         </li>
       )
-    })
-    return (
-      <div>
-        <h2>Leaderboard</h2>
-        <ol>
+      var names = leaderboard.map(function(leader){
+      return <ListGroupItem>{leader.name} - {leader.trailTime}</ListGroupItem>
+      })
+      return (
+        <div>
+          <h2>Leaderboard</h2>
+          <ListGroup>
           {names}
-        </ol>
-      </div>
-    )
+          </ListGroup>
+        </div>
+      )
+    }
   }
 })

@@ -1,4 +1,5 @@
 import React from 'react'
+import {InputGroup, Form, FormControl, Button} from 'react-bootstrap'
 import run from '../models/run'
 
 import convertMoment from '../models/convertTime'
@@ -9,7 +10,6 @@ run.getRankings()
   .then(function (rankings) {
     quickest = rankings
   })
-
 export default React.createClass({
   getInitialState () {
     return {
@@ -35,41 +35,53 @@ export default React.createClass({
       name: this.state.name,
       trailTime: trailTime
     }
+
     if (runDetails.name && runDetails.trailTime) {
-      run.postRunDetails(runDetails)
-      run.getRankings()
-        .then(function (rankings) {
-          quickest = rankings
-          this.setState({displayLeaderboard: true})
-        }.bind(this))
-    }
-  },
-  skipSubmit (e) {
-    e.preventDefault()
-    this.setState({displayLeaderboard: true})
-  },
-  render () {
-    if (this.state.displayLeaderboard) {
+
+      if(runDetails.name && runDetails.trailTime) {
+
+        run.postRunDetails(runDetails)
+        run.getRankings()
+          .then(function (rankings) {
+            quickest = rankings
+            this.setState({displayLeaderboard: true})
+          }.bind(this))
+      }
+    },
+    skipSubmit (e) {
+      e.preventDefault()
+      this.setState({displayLeaderboard: true})
+    },
+    render () {
+      if (this.state.displayLeaderboard) {
+        return (
+          <div>
+            <Leaderboard leaders={quickest} />
+          </div>
+        )
+      }
       return (
         <div>
-          <Leaderboard leaders={quickest} />
-        </div>
-      )
-    }
-    return (
-      <div>
-        <h2>Finished!</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type='text'
-            placeholder='Your Name'
-            onChange={this.handleNameChange}
-            required/>
-          <input type='submit' />
-        </form>
-        <button type='button' onClick={this.skipSubmit}>
-        Skip
-        </button>
+          <h2>Finished!</h2>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type='text'
+                placeholder='Your Name'
+                onChange={this.handleNameChange}
+                required/>
+                <input type='submit' />
+            </form>
+            <button type='button' onClick={this.skipSubmit}>
+            Skip
+            </button>
+            <InputGroup>
+              <FormControl type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
+                <InputGroup.Button>
+                  <Button onClick={this.handleSubmit}>Submit</Button>
+                </InputGroup.Button>
+            </InputGroup>
+          <br/>
+        <Button onClick={this.skipSubmit}>Skip</Button>
       </div>
     )
   }
