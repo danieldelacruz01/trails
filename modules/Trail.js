@@ -2,7 +2,6 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import {Alert, Button, ProgressBar} from 'react-bootstrap'
 import request from 'superagent'
-import Promise from 'promise'
 
 import run from '../models/run'
 import location from '../models/location.js'
@@ -146,7 +145,20 @@ var runDetails = {
 
 export default React.createClass({
   getInitialState(){
-    return {currentCheckpoint: 0, completed: false, checkingLocation: false, message:false}
+    return {
+      trailLoaded: false,
+      currentCheckpoint: 0,
+      completed: false,
+      checkingLocation: false,
+      message:false, }
+  },
+  componentDidMount(){
+    request
+      .get(`/v1/checkpoints/${this.props.trailId}`)
+      .end(function(err,res){
+        trail["checkpoints"] = res.body
+        this.setState({trailLoaded: true})
+      }.bind(this))
   },
   finishRun(e){
     run.getTimestamp()
@@ -198,7 +210,10 @@ export default React.createClass({
     }
   },
 	render(){
-    if (this.state.completed){
+    if(!this.state.trailLoaded){
+      return <div>Loading Trail...</div>
+    }
+    if(this.state.completed){
       return (
         <div>
           <Finish runDetails={runDetails}/>
