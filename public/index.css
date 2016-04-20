@@ -1,6 +1,9 @@
 body {
   padding: 5%;
   text-align: center;
+  background-image: url('./mapbg.png');
+  background-position: center top;
+  background-size: 100%;
 }
 
 button {
