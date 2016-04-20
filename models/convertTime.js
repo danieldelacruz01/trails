@@ -1,24 +1,22 @@
-//time is either start or end timestamp passsed in
-function convertToMinutes(time){
-  var date = new Date();
-  var hour = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  if (hour<10 ) {
-    hour = "0" + hour;
+var moment = require('moment')
+
+function convertMoment (start, end) {
+  var startMoment
+  var endMoment
+
+  if (start > end) {
+    startMoment = moment(end)
+    endMoment = moment(start)
+  } else {
+    startMoment = moment(start)
+    endMoment = moment(end)
   }
-  if(minutes<10){
-    minutes = "0" + minutes;
-  }
-  if(seconds<10){
-    seconds = "0" + seconds;
-  }
-  console.log("Your time is " + hour + ":" + minutes + ":" + seconds);
+  var secondsDifference = endMoment.diff(startMoment, 'seconds')
+
+  return moment()
+    .startOf('day')
+    .seconds(secondsDifference)
+    .format('H:mm:ss')
 }
 
-
-
-
-module.exports = {
- convertToMinutes:convertToMinutes
-}
+module.exports = convertMoment
