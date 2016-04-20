@@ -9,6 +9,7 @@ exports.up = function(knex, Promise) {
     table.string('name')
     table.string('trailTime')
     table.integer('trailId')
+    table.string('profilePic')
   })
 };
 

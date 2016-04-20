@@ -24,5 +24,5 @@ exports.seed = function(knex, Promise) {
     knex('checkpoints').insert({chkId:18, locationName: 'Dixon ', description:'St Hope-Gibbons',latitude:-41.290811, longitude:174.773828 ,imgUrl: 'http://wellington.scoop.co.nz/wp-content/uploads/2013/10/Hope-Gibbons-2.jpg',timeLimit:400, distanceInMetres:600, hint:'High flats', trailId:2}),
     knex('checkpoints').insert({chkId:19, locationName: 'Tonks lived here', description:'Historical',latitude:-41.296905, longitude:174.773602 ,imgUrl: 'http://static2.stuff.co.nz/1385408447/548/9442548.jpg',timeLimit:700, distanceInMetres:750, hint:'Cottage pie', trailId:2}),
     knex('checkpoints').insert({chkId:20, locationName: 'At its core its logical', description:'devs live here',latitude:-41.297342, longitude: 174.774296,imgUrl: 'http://wellington.scoop.co.nz/wp-content/uploads/2010/09/plaatje11.jpg',timeLimit:100, distanceInMetres:094, hint:'Here there and back again', trailId:2})
-  );
-};
+  )
+}
