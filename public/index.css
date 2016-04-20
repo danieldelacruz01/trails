@@ -13,6 +13,24 @@ button {
   box-sizing: border-box;
 }
 
+.trailName {
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+.trailCont {
+ padding-top: 5%;
+ padding-bottom: 5%;
+ overflow: auto;
+}
+.trailCont img {
+  opacity: .4;
+  height: 100%;
+  width: 100%;
+}
 #logo {
   max-height: 100px;
 }

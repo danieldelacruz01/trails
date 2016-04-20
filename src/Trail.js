@@ -12,10 +12,6 @@ import Timer from './Timer'
 import Finish from './Finish'
 
 export default React.createClass({
-
-  getInitialState () { // check if this is needed
-    return {currentCheckpoint: 0, completed: false, checkingLocation: false, message: false}
-
   getInitialState(){
     return {
       trailLoaded: false,
@@ -25,13 +21,16 @@ export default React.createClass({
       message:false, }
   },
   componentDidMount(){
-    request
-      .get(`/v1/checkpoints/${this.props.trailId}`)
-      .end(function(err,res){
-        trail["checkpoints"] = res.body
-        this.setState({trailLoaded: true})
-      }.bind(this))
-
+    if(!testing){
+      request
+        .get(`/v1/checkpoints/${this.props.trailId}`)
+        .end(function(err,res){
+          trail["checkpoints"] = res.body
+          this.setState({trailLoaded: true})
+        }.bind(this))
+    } else {
+      this.setState({trailLoaded: true})
+    }
   },
   finishRun (e) {
     run.getTimestamp()
@@ -91,23 +90,6 @@ export default React.createClass({
     }
     return buttonDiv
   },
-  render () {
-    if (this.state.completed) {
-    createButtonDiv(){
-    var buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Next</Button></div>
-    if (this.state.currentCheckpoint === 0){
-      buttonDiv = <div><Button bsSize="large" onClick={this.nextCheckpoint}>Start</Button></div>
-    }
-    if (this.state.currentCheckpoint+1 === trail.checkpoints.length) {
-      buttonDiv = <div><Button bsSize="large" onClick={this.finishRun}>Finish</Button></div>
-    }
-    return buttonDiv
-  },
-  notAtLocation(){
-    if(this.state.message){
-      return <Alert bsStyle="warning">{this.state.message}</Alert>
-    }
-  },
 	render(){
     if(!this.state.trailLoaded){
       return <div>Loading Trail...</div>
@@ -119,12 +101,6 @@ export default React.createClass({
         </div>
       )
     }
-    return (
-      <div>
-        <h2>MVP Trail</h2>
-        <h2>Checkpoint {this.state.currentCheckpoint + 1} of {trail.checkpoints.length}</h2>
-        <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation} />
-
  		return (
 			<div>
         <Timer/>

@@ -2,17 +2,6 @@ import React from 'react'
 import {Button, Well} from 'react-bootstrap'
 
 export default React.createClass({
-
-  loadClass () {
-    var currentCheckpoint = this.props.checkpoint
-    if (this.props.checkingLocation) {
-      return <img src={currentCheckpoint.imgUrl} className='checkpoint-image spinner' />
-    } else {
-      return <img src={currentCheckpoint.imgUrl} className='checkpoint-image ' />
-    }
-  },
-  render () {
-
   getInitialState(){
     return {hintEnabled: false}
   },
