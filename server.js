@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var compression = require('compression');
+
 var fs = require('fs');
 
 var Knex = require('knex')
@@ -9,7 +10,6 @@ var knexConfig = require('./knexfile')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
-
 
 app.use(compression())
 app.use(bodyParser.json());
@@ -26,6 +26,16 @@ app.get('/v1/trail', function (req, res) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
+});
+
+app.get('/v1/checkpoints/:trailId', function (req,res,next) {
+  knex.select('*').from('checkpoints').where({trailId: req.params.trailId})
+    .then(function(resp){
+      res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    });
 });
 
 app.get('/v1/runs', function (req,res,next) {
@@ -76,9 +86,12 @@ app.post('/v1/leaderboard', function (req, res) {
 });
 
 app.use(function(req, res){
-  res.redirect('/') 
+  res.redirect('/')
 })
 
+
+
+module.exports = app;
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {
