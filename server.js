@@ -5,14 +5,12 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var compression = require('compression');
 var fs = require('fs');
-
 var passport = require('passport')
 var Strategy = require('passport-facebook').Strategy
 var session = require('express-session')
-
 var Knex = require('knex')
-var knexConfig = require('./knexfile')
 
+var knexConfig = require('./knexfile')
 var config = require('./_config')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
@@ -76,6 +74,16 @@ app.get('/v1/trail', function (req, res) {
   });
 });
 
+app.get('/v1/checkpoints/:trailId', function (req,res,next) {
+  knex.select('*').from('checkpoints').where({trailId: req.params.trailId})
+    .then(function(resp){
+      res.send(resp)
+    })
+    .catch(function(error){
+      console.log(error)
+    });
+});
+
 app.get('/v1/runs', function (req,res,next) {
   knex.select("*").from("runs")
     .then(function(resp){
@@ -126,6 +134,8 @@ app.post('/v1/leaderboard', function (req, res) {
 app.use(function(req, res){
   res.redirect('/')
 })
+
+module.exports = app;
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {
