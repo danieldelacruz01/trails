@@ -1,6 +1,6 @@
 import React from 'react'
+import request from 'superagent'
 import run from '../models/run'
-
 import convertMoment from '../models/convertTime'
 import Leaderboard from './LeaderBoard'
 
@@ -14,7 +14,8 @@ export default React.createClass({
   getInitialState(){
     return {
       displayLeaderboard: false,
-      name: null,
+      leaderboardImageUrl: null,
+      name: null
     }
   },
   handleNameChange(e){
@@ -48,7 +49,17 @@ export default React.createClass({
     e.preventDefault()
     this.setState({displayLeaderboard: true})
   },
+  componentDidMount(){
+    request.get('/v1/fbdetails').end(function(err, res){
+      console.log(res.body)
+      this.setState({
+        name: res.body.name,
+        leaderboardImageUrl: res.body.picture.data.url
+      })
+    }.bind(this))
+  },
   render(){
+    console.log(this.state)
     if(this.state.displayLeaderboard){
       return (
         <div>
@@ -60,7 +71,7 @@ export default React.createClass({
       <div>
         <h2>Finished!</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Your Name" onChange={this.handleNameChange} required/>
+          <input type="text" placeholder="Your Name" value={this.state.name} onChange={this.handleNameChange} required/>
           <input type="submit"/>
         </form>
         <button type="button" onClick={this.skipSubmit}>Skip</button>

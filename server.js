@@ -18,33 +18,33 @@ var config = require('./_config')
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
 
+// serve our static stuff like index.css
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({extended: true}));
+app.use(require('express-session')({secret: 'keyboard cat', resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(compression())
+app.use(bodyParser.json());
+
 passport.use(new Strategy({
   clientID: config.facebook.clientID,
   clientSecret: config.facebook.clientSecret,
-  callbackURL: 'http://localhost:8080/login/facebook/return'
+  callbackURL: 'http://localhost:8080/login/facebook/return',
+  profileFields: ['id', 'displayName', 'photos']
 },
 function(accessToken, refreshToken, profile, cb) {
   return cb(null, profile)
 }));
+
 passport.serializeUser(function(user, cb){
   cb(null, user);
 });
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 })
-
-app.use(require('cookie-parser')());
-app.use(require('body-parser').urlencoded({extended: true}));
-app.use(require('express-session')({secret: 'keyboard cat', resave: true, saveUninitialized: true}));
-
-app.use(compression())
-app.use(bodyParser.json());
-
-// serve our static stuff like index.css
-app.use(express.static(path.join(__dirname, 'public')))
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
@@ -53,14 +53,24 @@ app.get('/', function (req, res) {
 app.get('/login/facebook',
   passport.authenticate('facebook'));
 
-app.get('login/facebook/return',
+app.get('/login/facebook/return',
   passport.authenticate('facebook',{failureRedirect: '/login'}),
   function(req, res){
-    res.redirect('/')
+    res.redirect('/trail')
   });
 
+app.get('/v1/fbdetails', function (req, res){
+  console.log('rsp', req.session.passport)
+  var sessionDetails = {
+    id: req.session.passport.user.id,
+    displayName: req.session.passport.user.displayName,
+    photo: req.session.passport.user.photos[0].value
+  }
+  res.json(req.session.passport.user._json)
+})
+
 app.get('/v1/trail', function (req, res) {
-  fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
+    fs.readFile('checkpoint-data.json', 'utf8', (err, data) => {
     if (err) throw err;
     res.json(JSON.parse(data));
   });

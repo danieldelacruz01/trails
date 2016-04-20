@@ -103,6 +103,7 @@ export default React.createClass({
     }
     return buttonDiv
   },
+
 	render(){
     if (this.state.completed){
       return (
