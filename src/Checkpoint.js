@@ -33,7 +33,7 @@ export default React.createClass({
   },
   showDistance(){
     var currentCheckpoint = this.props.checkpoint
-    if (currentCheckpoint.distanceInMeters){return (<div>Distance from last checkpoint: {currentCheckpoint.distanceInMeters} metres</div>)
+    if (currentCheckpoint.distanceInMetres){return (<div>Distance from last checkpoint: {currentCheckpoint.distanceInMetres} metres</div>)
     } else {
       return (<div>Visit the landmark above to start your run</div>)
     }
