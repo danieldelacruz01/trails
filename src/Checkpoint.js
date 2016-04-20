@@ -33,28 +33,14 @@ export default React.createClass({
   },
   showDistance() {
     var currentCheckpoint = this.props.checkpoint
-      if (currentCheckpoint.distanceInMeters){return (<div>Distance from last checkpoint: {currentCheckpoint.distanceInMeters} metres</div>)
-      } else {
-        return (<div>Visit the landmark above to start your run</div>)
-      }
-    },
-  render() {
+    if (currentCheckpoint.distanceInMetres){return (<div>Distance from last checkpoint: {currentCheckpoint.distanceInMetres} metres</div>)
+    } else {
+      return (<div>Visit the landmark above to start your run</div>)
+    }
+  },
+  render(){
     return (
       <div>
-        {this.loadClass()}
-          <ul>
-            <li>
-              Hint:
-              {currentCheckpoint.hint}
-            </li>
-            <li>
-              Distance from last checkpoint:
-              {currentCheckpoint.distance} metres
-            </li>
-            <div>
-            {this.props.status}
-            </div>
-          </ul>
         {this.loadClass()}
         {this.showDistance()}
         <Button onClick={this.toggleHint}>Show hint</Button>

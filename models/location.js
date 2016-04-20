@@ -10,13 +10,19 @@ function getUserLocation () {
   })
 }
 
-function verifyUserPosition (checkpointCoords) {
-  return new Promise(function (resolve, reject) {
+function verifyUserPosition(checkpointCoords, testStatus){
+  if(testStatus) {
+    checkpointCoords = {
+      latitude: -41.296912,
+      longitude: 174.773789
+    }
+  }
+  return new Promise(function(resolve,reject){
     getUserLocation()
       .then(function (userCoords) {
         resolve(verifyUserCoordsInRange(userCoords, checkpointCoords))
       })
-      .catch(function (error) {})// error needs to be handled
+      .catch(function (error) {})
   })
 }
 
@@ -28,5 +34,7 @@ function verifyUserCoordsInRange (userCoords, checkpointCoords) {
   userCoords.longitude >= checkpointCoords.longitude - range)
 }
 
-module.exports = verifyUserPosition
+module.exports = {
+  verifyUserPosition: verifyUserPosition
+}
 
