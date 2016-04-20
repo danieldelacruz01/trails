@@ -1,11 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './modules/App'
+import App from './src/App'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import About from './modules/About'
-import TrailSelector from './modules/TrailSelector'
-import Home from './modules/Home'
-
+import About from './src/About'
+import TrailSelector from './src/TrailSelector'
+import Home from './src/Home'
 
 render((
   <Router history={browserHistory}>

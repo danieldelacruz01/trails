@@ -153,12 +153,16 @@ export default React.createClass({
       message:false, }
   },
   componentDidMount(){
-    request
-      .get(`/v1/checkpoints/${this.props.trailId}`)
-      .end(function(err,res){
-        trail["checkpoints"] = res.body
-        this.setState({trailLoaded: true})
-      }.bind(this))
+    if(!testing){
+      request
+        .get(`/v1/checkpoints/${this.props.trailId}`)
+        .end(function(err,res){
+          trail["checkpoints"] = res.body
+          this.setState({trailLoaded: true})
+        }.bind(this))
+    } else {
+      this.setState({trailLoaded: true})
+    }
   },
   finishRun(e){
     run.getTimestamp()
