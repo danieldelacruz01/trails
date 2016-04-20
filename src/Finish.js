@@ -57,7 +57,6 @@ export default React.createClass({
   },
   componentDidMount(){
     request.get('/v1/fbdetails').end(function(err, res){
-      console.log(res.body)
       this.setState({
         name: res.body.name,
         leaderboardImageUrl: res.body.picture.data.url
