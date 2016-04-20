@@ -1,7 +1,7 @@
 body {
   padding: 5%;
   text-align: center;
-  background-image: url('./mapbg.png');
+  background-image: url('/images/mapbg.png');
   background-color: #fafafa;
   background-position: center top;
   background-attachment: fixed;

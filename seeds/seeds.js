@@ -1,9 +1,8 @@
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   return Promise.join(
-    // Deletes ALL existing entries
+
     knex('runs').del(),
 
-    // Inserts seed entries
     knex('runs').insert({runId: 1, startTime:  1460944800000, endTime:1460948400000, name:'Daniel',trailTime:'1:00:00', trailId: 1, profilePic: 'http://dk6kcyuwrpkrj.cloudfront.net/wp-content/uploads/sites/45/2014/05/avatar-blank.jpg'}),
     knex('runs').insert({runId: 2, startTime:  1460944800000, endTime:1460948460000, name: 'Dominic', trailTime:'1:01:00',trailId: 1, profilePic: 'http://dk6kcyuwrpkrj.cloudfront.net/wp-content/uploads/sites/45/2014/05/avatar-blank.jpg'}),
     knex('runs').insert({runId: 3, startTime:  1460944800000, endTime: 1460948280000, name: 'Louise', trailTime:'0:58:00',trailId: 1, profilePic: 'http://dk6kcyuwrpkrj.cloudfront.net/wp-content/uploads/sites/45/2014/05/avatar-blank.jpg'}),
