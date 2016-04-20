@@ -106,32 +106,32 @@ export default React.createClass({
             Start
           </button>
         </div>
-      }
-      if (this.state.currentCheckpoint + 1 === trail.checkpoints.length) {
-        buttonDiv = <div>
-          <button onClick={this.finishRun}>
-            Finish
-          </button>
-          </div>
-      }
+    }
+    if (this.state.currentCheckpoint + 1 === trail.checkpoints.length) {
+      buttonDiv = <div>
+        <button onClick={this.finishRun}>
+          Finish
+        </button>
+      </div>
+    }
     return buttonDiv
   },
   render () {
-      if (this.state.completed) {
+    if (this.state.completed) {
       return (
-      <div>
-        <Finish runDetails={runDetails} />
-      </div>
+        <div>
+          <Finish runDetails={runDetails} />
+        </div>
       )
-      }
+    }
     return (
-    <div>
-      <h2>MVP Trail</h2>
-      <h2>Checkpoint {this.state.currentCheckpoint + 1} of {trail.checkpoints.length}</h2>
-      <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation} />
-      {this.createButtonDiv()}
-      {this.state.message}
-    </div>
+      <div>
+        <h2>MVP Trail</h2>
+        <h2>Checkpoint {this.state.currentCheckpoint + 1} of {trail.checkpoints.length}</h2>
+        <Checkpoint checkpoint={trail.checkpoints[this.state.currentCheckpoint]} checkingLocation={this.state.checkingLocation} />
+        {this.createButtonDiv()}
+        {this.state.message}
+      </div>
     )
   }
 })

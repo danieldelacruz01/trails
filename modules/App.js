@@ -8,23 +8,23 @@ export default React.createClass({
     return (
       <div>
         <h1>T R A I L S</h1>
-          <ul role='nav'>
-            <li>
-              <IndexLink to='/' activeClassName='active'>
-              Home
-              </IndexLink>
-            </li>
-            <li>
-              <NavLink to='/about'>
-              About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/trail'>
-              Trail
-              </NavLink>
-            </li>
-          </ul>
+        <ul role='nav'>
+          <li>
+            <IndexLink to='/' activeClassName='active'>
+            Home
+            </IndexLink>
+          </li>
+          <li>
+            <NavLink to='/about'>
+            About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/trail'>
+            Trail
+            </NavLink>
+          </li>
+        </ul>
         {this.props.children}
       </div>
     )

@@ -7,13 +7,13 @@ export default React.createClass({
     return (
       <div>
         <h2>About</h2>
-          <ul>
-        <li>
-          <NavLink to='/trail'>
-            trailblazers
-          </NavLink>
-        </li>
-      </ul>
+        <ul>
+          <li>
+            <NavLink to='/trail'>
+              trailblazers
+            </NavLink>
+          </li>
+        </ul>
       {this.props.children}
       </div>
     )

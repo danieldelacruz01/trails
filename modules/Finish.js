@@ -18,7 +18,7 @@ export default React.createClass({
     }
   },
   handleNameChange (e) {
-    e.preventDefault ()
+    e.preventDefault()
     this.state.name = e.target.value
   },
   handleSubmit (e) {
@@ -59,14 +59,14 @@ export default React.createClass({
     return (
       <div>
         <h2>Finished!</h2>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type='text'
-              placeholder='Your Name'
-              onChange={this.handleNameChange}
-              required/>
-            <input type='submit' />
-          </form>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type='text'
+            placeholder='Your Name'
+            onChange={this.handleNameChange}
+            required/>
+          <input type='submit' />
+        </form>
         <button type='button' onClick={this.skipSubmit}>
         Skip
         </button>
