@@ -35,7 +35,6 @@ export default React.createClass({
       .get(`/v1/checkpoints/${this.props.trailId}`)
       .end(function(err,res){
         trail["checkpoints"] = res.body
-        console.log(trail)
         this.setState({trailLoaded: true})
       }.bind(this))
   },
@@ -90,7 +89,6 @@ export default React.createClass({
     }
   },
 	render(){
-    console.log(trail.checkpoints)
     if(!this.state.trailLoaded){
       return <div>Loading Trail...</div>
     }
