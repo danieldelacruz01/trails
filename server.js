@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', function (req, res) {
+  res.status(200).send('ok');//for mocha test
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 
@@ -91,9 +92,15 @@ app.use(function(req, res){
 
 
 
-module.exports = app;
+//module.exports = app;
 
 var PORT = process.env.PORT || 8080
-app.listen(PORT, function() {
+var server = app.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT)
 })
+
+// var server = app.listen(PORT, function() {
+// var PORT = process.env.PORT || 8080
+//   console.log('Production Express server running at localhost:' + PORT)
+// })
+module.exports = server;
