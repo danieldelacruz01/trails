@@ -74,7 +74,7 @@ export default React.createClass({
         <InputGroup>
           <FormControl type="text" placeholder="Your Name" value={this.state.name} onChange={this.handleNameChange} required/>
           <InputGroup.Button>
-            <Button onClick={this.handleSubmit}>Submit</Button>
+            <Button type="submit" onClick={this.handleSubmit}>Submit</Button>
           </InputGroup.Button>
         </InputGroup>
         <br/>

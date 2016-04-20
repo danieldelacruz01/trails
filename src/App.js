@@ -2,7 +2,6 @@ import React from 'react'
 import {IndexLink, Link} from 'react-router'
 import {ButtonGroup, Button} from 'react-bootstrap'
 import NavLink from "./NavLink"
-import Login from './Login'
 import Home from "./Home"
 
 export default React.createClass({
@@ -15,7 +14,6 @@ export default React.createClass({
             <ButtonGroup justified bsSize="large">
               <IndexLink to="/" activeClassName="active"><Button className="nav-button">Home</Button></IndexLink>
               <NavLink to="/about" ><Button className="nav-button">About</Button></NavLink>
-              <NavLink to="/login" ><Button className="nav-button">Login</Button></NavLink>
               <NavLink to="/trail" ><Button className="nav-button">Trail</Button></NavLink>
             </ButtonGroup>
           </div>
