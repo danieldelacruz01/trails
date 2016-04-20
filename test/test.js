@@ -3,7 +3,7 @@ var location = require('../models/location.js')
 
 function compareUserToCheckpoint(checkpointCoords, userCoords){
   var range = 0.00005
-  //User coords would be from g etUserLocation() in production
+  //User coords would be from getUserLocation() in production
   if (checkpointCoords.latitude<0) { checkpointCoords.latitude = Math.sqrt(checkpointCoords.latitude*checkpointCoords.latitude) }
   if (userCoords.latitude<0)       { userCoords.latitude = Math.sqrt(userCoords.latitude*userCoords.latitude) }
 
