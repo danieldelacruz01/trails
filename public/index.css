@@ -1,7 +1,7 @@
 body {
   padding: 5%;
   text-align: center;
-  background-image: url('/images/mapbg.png');
+  background-image: url('images/mapbg.png');
   background-color: #fafafa;
   background-position: center top;
   background-attachment: fixed;
@@ -11,6 +11,10 @@ body {
 
 button {
   box-sizing: border-box;
+}
+
+.profilePic{
+  max-width: 50px;
 }
 
 .trailName {

@@ -71,8 +71,8 @@ app.get('/v1/checkpoints/:trailId', function (req,res,next) {
     })
 })
 
-app.get('/v1/runs', function (req,res,next) {
-  knex.select("*").from("runs")
+app.get('/v1/runs/:runId', function (req,res,next) {
+  knex.select("*").from("runs").where({runId: req.params.runId})
     .then(function(resp){
       res.send(resp)
     })
