@@ -13,8 +13,8 @@ function getUserLocation () {
 function verifyUserPosition(checkpointCoords, testStatus){
   if(testStatus) {
     checkpointCoords = {
-      latitude: -41.296912,
-      longitude: 174.773789
+      latitude: -41.1795451,
+      longitude: 174.9297197
     }
   }
   return new Promise(function(resolve,reject){
