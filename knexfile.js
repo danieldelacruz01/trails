@@ -9,11 +9,10 @@ module.exports = {
     useNullAsDefault: true
   },
   test: {
-    client: 'postgresql',
+    client: 'sqlite3',
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
+      filename: './test.sqlite3'
+    // database: './test.sqlite3'
     },
     useNullAsDefault: true
   },
@@ -36,12 +35,12 @@ module.exports = {
     }
   },
 
-  production: process.env.Database_URL || {
+  production: {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user: process.env.PG_DATABASE_USER,
-      password: process.env.PG_DATABASE_PASSWORD
+      user: 'username',
+      password: 'password'
     },
     pool: {
       min: 2,
