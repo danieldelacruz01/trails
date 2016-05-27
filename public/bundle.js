@@ -47213,6 +47213,7 @@
 	  return new Promise(function (resolve, reject) {
 	    if (navigator.geolocation) {
 	      var userCoords = navigator.geolocation.getCurrentPosition(function (position) {
+	        console.log(position.coords);
 	        resolve(position.coords);
 	      });
 	    } else {
