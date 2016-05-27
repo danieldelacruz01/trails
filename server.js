@@ -29,7 +29,7 @@ app.use(bodyParser.json())
 passport.use(new Strategy({
   clientID: config.facebook.clientID,
   clientSecret: config.facebook.clientSecret,
-  callbackURL: 'http://localhost:8080/login/facebook/return',
+  callbackURL: 'http://trails-app.herokuapp.com/login/facebook/return',
   profileFields: ['id', 'displayName', 'photos']
 },
 function(accessToken, refreshToken, profile, cb) {
