@@ -3,8 +3,8 @@ exports.up = function (knex, Promise) {
 
   return knex.schema.createTableIfNotExists('runs', function (table) {
     table.increments('runId')
-    table.integer('startTime')
-    table.integer('endTime')
+    table.bigInteger('startTime')
+    table.bigInteger('endTime')
     table.string('name')
     table.string('trailTime')
     table.integer('trailId')
