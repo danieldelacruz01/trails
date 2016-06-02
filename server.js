@@ -22,11 +22,9 @@ var forceSsl = function (req, res, next){
   return next()
 }
 
-app.configure(function () {
-  if (process.env.NODE_ENV == 'production'){
-    app.use(forceSsl)
-  }
-})
+if (process.env.NODE_ENV == 'production'){
+  app.use(forceSsl)
+}
 
 app.use(express.static(path.join(__dirname, 'public')))
 
