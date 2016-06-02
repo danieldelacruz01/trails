@@ -47214,7 +47214,9 @@
 	      var userCoords = navigator.geolocation.getCurrentPosition(function (position) {
 	        console.log(position.coords);
 	        resolve(position.coords);
-	      });
+	      }, function (err) {
+	        alert('Please enable location access');
+	      }, { enableHighAccuracy: true });
 	    } else {
 	      reject('Geolocation not supported by this browser');
 	    }
@@ -47235,7 +47237,7 @@
 	}
 
 	function verifyUserCoordsInRange(userCoords, checkpointCoords) {
-	  var range = 0.0003;
+	  var range = 0.005;
 	  return userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range;
 	}
 
