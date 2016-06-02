@@ -47237,7 +47237,7 @@
 	}
 
 	function verifyUserCoordsInRange(userCoords, checkpointCoords) {
-	  var range = 0.0003;
+	  var range = 0.00008;
 	  return userCoords.latitude <= checkpointCoords.latitude + range && userCoords.latitude >= checkpointCoords.latitude - range && userCoords.longitude <= checkpointCoords.longitude + range && userCoords.longitude >= checkpointCoords.longitude - range;
 	}
 
