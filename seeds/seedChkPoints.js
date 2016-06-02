@@ -3,7 +3,7 @@ exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
     knex('checkpoints').del(),
 
-    knex('checkpoints').insert({chkId:1, locationName: 'Bucket Fountain', description:'Bucket and water feature',latitude:-41.292196, longitude: 174.776364,imgUrl: 'images/1.jpg',timeLimit:null, distanceInMetres:null, hint:'Where is Hanava', trailId:1}),
+    knex('checkpoints').insert({chkId:1, locationName: 'Bucket Fountain', description:'Bucket and water feature',latitude:-41.292196, longitude: 174.776364,imgUrl: 'images/1.jpg',timeLimit:null, distanceInMetres:null, hint:'Where is Havana?', trailId:1}),
     knex('checkpoints').insert({chkId:2, locationName: 'Public space', description:'Books and galleries',latitude:-41.288668, longitude: 174.777244,imgUrl: 'images/2.jpg',timeLimit:240, distanceInMetres:400, hint:'How civil of you', trailId:1}),
     knex('checkpoints').insert({chkId:3, locationName: 'On the waterfront', description:'Bronze statue',latitude:-41.288668, longitude:174.777244 ,imgUrl: 'images/3.jpg',timeLimit:480, distanceInMetres:650, hint:'Not near Te Mama', trailId:1}),
     knex('checkpoints').insert({chkId:4, locationName: 'Theatre on Cambridge', description:'Tripod',latitude:-41.294373, longitude: 174.784174,imgUrl: 'images/4.jpg',timeLimit:540, distanceInMetres:650, hint:'Not in England', trailId:1}),
