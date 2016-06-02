@@ -47223,6 +47223,7 @@
 	}
 
 	function verifyUserPosition(checkpointCoords) {
+	  console.log(process.env.TEST_COORDS);
 	  if (process.env.TEST_COORDS) {
 	    checkpointCoords = {
 	      latitude: -41.296912,
