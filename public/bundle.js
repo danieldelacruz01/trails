@@ -47223,10 +47223,10 @@
 
 	function verifyUserPosition(checkpointCoords) {
 	  //uncomment if using dummy coords
-	  checkpointCoords = {
-	    latitude: -41.296912,
-	    longitude: 174.773789
-	  };
+	  // checkpointCoords = {
+	  //   latitude: -41.296912,
+	  //   longitude: 174.773789
+	  // }
 	  return new Promise(function (resolve, reject) {
 	    getUserLocation().then(function (userCoords) {
 	      resolve(verifyUserCoordsInRange(userCoords, checkpointCoords));
