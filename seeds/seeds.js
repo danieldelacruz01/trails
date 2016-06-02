@@ -26,5 +26,5 @@ exports.seed = function (knex, Promise) {
     // knex('runs').insert({runId: 21, startTime:  1461031200000, endTime: 1461034800000, name:'Toby',trailTime:'1:00:00', trailId: 2, profilePic: 'images/avatar-blank.jpg'}),
     // knex('runs').insert({runId: 22, startTime:  1461031200000, endTime:1461034804000, name:'Lucy',trailTime:'1:04:00', trailId: 2, profilePic: 'images/avatar-blank.jpg'}),
     // knex('runs').insert({runId: 23, startTime:  1461031200000, endTime:1461034740000, name:'Josh',trailTime:'0:59:00', trailId: 2, profilePic: 'images/avatar-blank.jpg'})
-    // )
+    )
 }
