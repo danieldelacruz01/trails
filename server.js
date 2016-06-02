@@ -16,6 +16,19 @@ var config = require('./_config')
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
 
+var forceSsl = function (req, res, next){
+  if (req.headers['x-forwarded-proto'] !== 'https'){
+    return res.redirect(['https://', req.get('Host'), req.url].join('')])
+  }
+  return next()
+}
+
+app.configure(function () {
+  if (process.env.NODE_ENV == 'production'){
+    app.use(forceSsl)
+  }
+})
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(require('cookie-parser')())
