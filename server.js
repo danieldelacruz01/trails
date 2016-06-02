@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 passport.use(new Strategy({
   clientID: process.env.FACEBOOK_ID,
   clientSecret: process.env.FACEBOOK_SECRET,
-  callbackURL: 'http://trails-app.herokuapp.com/login/facebook/return',
+  callbackURL: 'https://trails-app.herokuapp.com/login/facebook/return',
   profileFields: ['id', 'displayName', 'photos']
 },
 function(accessToken, refreshToken, profile, cb) {
