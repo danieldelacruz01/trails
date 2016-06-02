@@ -1,5 +1,4 @@
 var Promise = require('promise')
-var dotenv = require('dotenv').load()
 
 function getUserLocation () {
   return new Promise(function (resolve, reject) {
@@ -13,12 +12,10 @@ function getUserLocation () {
 }
 
 function verifyUserPosition(checkpointCoords){
-  console.log(process.env.TEST_COORDS)
-  if(process.env.TEST_COORDS) {
-    checkpointCoords = {
-      latitude: -41.296912,
-      longitude: 174.773789
-    }
+  //uncomment if using dummy coords
+  checkpointCoords = {
+    latitude: -41.296912,
+    longitude: 174.773789
   }
   return new Promise(function(resolve,reject){
     getUserLocation()
