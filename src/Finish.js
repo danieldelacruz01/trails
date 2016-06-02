@@ -39,7 +39,7 @@ export default React.createClass({
     if(this.state.leaderboardImageUrl){
       runDetails["profilePic"] = this.state.leaderboardImageUrl
     } else {
-      runDetails["profilePic"] = "http://dk6kcyuwrpkrj.cloudfront.net/wp-content/uploads/sites/45/2014/05/avatar-blank.jpg"
+      runDetails["profilePic"] = "images/avatar-blank.jpg"
     }
     if(runDetails.name && runDetails.trailTime){
       run.postRunDetails(runDetails)

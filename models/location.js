@@ -4,18 +4,18 @@ function getUserLocation () {
   return new Promise(function (resolve, reject) {
     if (navigator.geolocation) {
       var userCoords = navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords)
         resolve(position.coords)
       })
     } else { reject('Geolocation not supported by this browser') }
   })
 }
 
-function verifyUserPosition(checkpointCoords, testStatus){
-  if(testStatus) {
-    checkpointCoords = {
-      latitude: -41.296912,
-      longitude: 174.773789
-    }
+function verifyUserPosition(checkpointCoords){
+  //uncomment if using dummy coords
+  checkpointCoords = {
+    latitude: -41.296912,
+    longitude: 174.773789
   }
   return new Promise(function(resolve,reject){
     getUserLocation()
@@ -27,7 +27,7 @@ function verifyUserPosition(checkpointCoords, testStatus){
 }
 
 function verifyUserCoordsInRange (userCoords, checkpointCoords) {
-  var range = 0.00008
+  var range = 0.0003
   return (userCoords.latitude <= checkpointCoords.latitude + range &&
   userCoords.latitude >= checkpointCoords.latitude - range) &&
   (userCoords.longitude <= checkpointCoords.longitude + range &&

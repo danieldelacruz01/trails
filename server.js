@@ -11,7 +11,6 @@ var session = require('express-session')
 var Knex = require('knex')
 
 var knexConfig = require('./knexfile')
-var config = require('./_config')
 
 var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var app = express()
@@ -40,9 +39,9 @@ app.use(compression())
 app.use(bodyParser.json())
 
 passport.use(new Strategy({
-  clientID: config.facebook.clientID,
-  clientSecret: config.facebook.clientSecret,
-  callbackURL: 'http://localhost:8080/login/facebook/return',
+  clientID: process.env.FACEBOOK_ID,
+  clientSecret: process.env.FACEBOOK_SECRET,
+  callbackURL: 'https://trails-app.herokuapp.com/login/facebook/return',
   profileFields: ['id', 'displayName', 'photos']
 },
 function(accessToken, refreshToken, profile, cb) {

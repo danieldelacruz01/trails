@@ -11,7 +11,6 @@ import Checkpoint from './Checkpoint'
 import Timer from './Timer'
 import Finish from './Finish'
 
-var testing = true
 var trail = {}
 
 var runDetails = {
@@ -57,7 +56,7 @@ export default React.createClass({
     if (this.state.currentCheckpoint < trail.checkpoints.length - 1) {
       var currentCheckpoint = this.state.currentCheckpoint
       this.setState({checkingLocation: true, message:false})
-      location.verifyUserPosition(trail.checkpoints[currentCheckpoint], testing)
+      location.verifyUserPosition(trail.checkpoints[currentCheckpoint])
         .then(function(pass){
           if(pass){
             this.setState({
