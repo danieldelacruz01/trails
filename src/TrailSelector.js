@@ -20,8 +20,8 @@ export default React.createClass({
                 <div className="trailCont">
           			 <img value="1" onClick={this.selectTrail} src="images/1.jpg"/>
                    <div className="trailName">
-                    <h3>Trail 1</h3>
-                    <p>This is the mvp trail</p>
+                    <h3>CBD Circuit</h3>
+                    <p>Sprint or stroll the streets</p>
                    </div>
                 </div>
 		    			</Col>
@@ -29,8 +29,8 @@ export default React.createClass({
                	<div className="trailCont">
                   <img value="2" onClick={this.selectTrail} src="images/11.jpg"/>
 		    				    <div className="trailName">
-                    <h3>Trail 2</h3>
-                    <p>This is the other trail</p>
+                    <h3>Iconic Buildings</h3>
+                    <p>Capital Architecture</p>
                     </div>
                 </div>
 			    		</Col>
