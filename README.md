@@ -10,9 +10,9 @@ Project Description
 -------------------
 Trails is a landmark scavenger hunt game. There is an app for andriod built on cordova.
 
-App link:
+App link: 
 ---------
-You can find the currently deployed app at somewhere yet to be decided.
+You can find the currently deployed app at; https://trails-app.herokuapp.com/.
 
 Github workflow
 ---------------
